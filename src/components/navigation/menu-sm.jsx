@@ -18,16 +18,16 @@ export default function MenuSM(props) {
                     <nav className="menu__sm">
                         <ul>
                             <li>
-                                <a href="inicio">Inicio</a>
+                                <a href="#inicio">Inicio</a>
                             </li>
                             <li>
-                                <a href="nosotros">Nosotros</a>
+                                <a href="#nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="asesorias">Asesorías</a>
+                                <a href="#asesorias">Asesorías</a>
                             </li>
                             <li>
-                                <a href="ayuda">Ayuda</a>
+                                <a href="#ayuda">Ayuda</a>
                             </li>
                         </ul>
                     </nav>
