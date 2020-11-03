@@ -11,9 +11,9 @@ html {
 }
 /* Header */
 .header__container {
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     background-color: var(--main-purple);
-    height: 90vh;
+    height: 98vh;
 }
 /* Navigation */
 .nav__bar {
@@ -217,8 +217,62 @@ html {
     color: #fff;
 }
 
+/* Banner */
+.banner__container {
+    position: relative;
+    /* padding-top: 70px; */
+    margin: 0 5%;
+    height: 80vh;
+    width: 90%;
+    z-index: 200;
+}
+.banner__title{
+    margin: 15px 0 30px 0;
+    font-size: 39px;
+    font-weight: bold;
+    color: #ffff;
+    line-height: 38px;
+}
+.banner__tag{
+    margin: 0;
+    font-size: 1.3rem;
+    color: #ffff;
+    letter-spacing: 2px;
+}
+.banner__btn{
+    background-color: var(--secondary-blue);
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+    .banner__img{
+        display: none;
+    }
+    .banner__info{
+        padding-left: 20px;
+        padding-right: 30px;
+    }
+    .banner__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
 
 /* Helpers */
 .nav__shadow {
@@ -260,7 +314,7 @@ html {
 .purple {
     color: var(--main-purple);
 }
-.active__link{
+.active__link {
     color: var(--secondary-blue) !important;
 }
 .active__link:before {
@@ -273,7 +327,7 @@ html {
     background-color: var(--secondary-blue);
     transition: all 200ms ease-in-out;
 }
-.active__md__link{
+.active__md__link {
     color: var(--main-purple) !important;
 }
 .white {
@@ -284,15 +338,15 @@ html {
     border: solid 1px red;
 }
 
-#nosotros{
+#nosotros {
     padding-top: 70px;
     height: 200px;
 }
-#asesorias{
+#asesorias {
     padding-top: 70px;
     height: 300px;
 }
-#ayuda{
+#ayuda {
     padding-top: 70px;
     height: 400px;
 }
