@@ -220,26 +220,24 @@ html {
 /* Banner */
 .banner__container {
     position: relative;
-    /* padding-top: 70px; */
     margin: 0 5%;
-    height: 80vh;
     width: 90%;
     z-index: 200;
 }
-.banner__title{
-    margin: 15px 0 30px 0;
+.banner__title {
+    margin: 15px 0 30px;
     font-size: 39px;
     font-weight: bold;
     color: #ffff;
     line-height: 38px;
 }
-.banner__tag{
+.banner__tag {
     margin: 0;
     font-size: 1.3rem;
     color: #ffff;
     letter-spacing: 2px;
 }
-.banner__btn{
+.banner__btn {
     background-color: var(--secondary-blue);
     color: #fff;
     font-weight: bold;
@@ -247,17 +245,17 @@ html {
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .banner__img{
+    .banner__img {
         display: none;
     }
-    .banner__info{
+    .banner__info {
+        position: absolute;
+        bottom: 0;
         padding-left: 20px;
         padding-right: 30px;
     }
     .banner__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
+        height: 85vh;
     }
 
 }

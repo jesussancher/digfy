@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Banner() {
     return (
-        <div className="banner__container">
+        <div className="banner__container banner">
             <div className="banner__info">
                 <p className="banner__tag montserrat__font">#MejoresFinanzas</p>
                 <p className="banner__title montserrat__font">Tus cuentas en verde</p>
