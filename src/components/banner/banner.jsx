@@ -8,8 +8,7 @@ export default function Banner() {
                 <p className="banner__title montserrat__font">Aprende a dejar esas culebras en $0</p>
                 <a className="banner__btn btn montserrat__font" href="">¿Cómo están mis finanzas?</a>
             </div>
-            <div className="banner__img debug">
-                Img
+            <div className="banner__img">
             </div>
 
         </div>

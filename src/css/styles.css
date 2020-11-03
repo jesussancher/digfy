@@ -5,6 +5,7 @@
 }
 body {
     height: 350vh;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
@@ -183,7 +184,7 @@ html {
 .menu__small {
     top: 70px;
     right: 0;
-    height: 70vh;
+    height: 60vh;
     z-index: 10;
     background-color: rgba(255,255,255,1);
     transition: all 600ms ease-in-out;
@@ -220,16 +221,17 @@ html {
 /* Banner */
 .banner__container {
     position: relative;
+    bottom: 0;
     margin: 0 5%;
-    width: 90%;
+    width: 100%;
     z-index: 200;
 }
 .banner__title {
-    margin: 15px 0 30px;
+    margin: 15px 0 30px 0;
     font-size: 39px;
     font-weight: bold;
     color: #ffff;
-    line-height: 38px;
+    line-height: 40px;
 }
 .banner__tag {
     margin: 0;
@@ -261,10 +263,44 @@ html {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+    .banner__img {
+        display: none;
+    }
+    .banner__info {
+        position: absolute;
+        bottom: 0;
+        padding-left: 20px;
+        padding-right: 100px;
+    }
+    .banner__container {
+        height: 80vh;
+    }
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 940px) {
+    .banner__info {
+        width: 45%;
+        position: static;
+        bottom: 0;
+        padding-left: 20px;
+        padding-right: 30px;
+    }
+    .banner__info a{
+        position: relative;
+        width: 200px;
+    }
+    .banner__img {
+        width: 55%;
+        height: 100%;
+        display: inline-block;
+    }
+    .banner__container {
+        display: flex;
+        align-items: end;
+    }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {}
