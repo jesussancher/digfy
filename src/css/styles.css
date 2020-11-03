@@ -4,7 +4,10 @@
     --secondary-blue: #6bc1ce;
 }
 body {
-    height: 300vh;
+    height: 350vh;
+}
+html {
+    scroll-behavior: smooth;
 }
 /* Header */
 .header__container {
@@ -183,7 +186,7 @@ body {
     height: 70vh;
     z-index: 10;
     background-color: rgba(255,255,255,1);
-    transition: all 300ms ease-in;
+    transition: all 600ms ease-in-out;
 }
 .menu__sm ul {
     width: 90%;
@@ -213,7 +216,6 @@ body {
     border-radius: 10px;
     color: #fff;
 }
-
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {}
@@ -258,10 +260,39 @@ body {
 .purple {
     color: var(--main-purple);
 }
+.active__link{
+    color: var(--secondary-blue) !important;
+}
+.active__link:before {
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 30%;
+    background-color: var(--secondary-blue);
+    transition: all 200ms ease-in-out;
+}
+.active__md__link{
+    color: var(--main-purple) !important;
+}
 .white {
     color: #fff;
 }
 /* Debugging */
 .debug {
     border: solid 1px red;
+}
+
+#nosotros{
+    padding-top: 70px;
+    height: 200px;
+}
+#asesorias{
+    padding-top: 70px;
+    height: 300px;
+}
+#ayuda{
+    padding-top: 70px;
+    height: 400px;
 }

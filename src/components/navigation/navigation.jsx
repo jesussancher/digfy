@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Burger from './burger';
 import Menu from './menu';
 import MenuMD from './menu-md';
@@ -33,7 +33,7 @@ export default function Navigation(props) {
             </div>
         )
     } else {
-        return (<Menu y={props.y}/>)
+        return (<Menu />)
     }
 
 }

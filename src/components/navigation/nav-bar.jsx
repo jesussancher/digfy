@@ -1,45 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Navigation from './navigation'
 
 export default function NavBar() {
+    const [navBar,
+        setNavBar] = useState(false);
     const [logoColor,
         setLogoColor] = useState("#fff");
-    const [y,
-        setY] = useState(window.scrollY);
+
     // Navigation change bacground colour
-    const getHieght = () => {
-        const y = window.scrollY;
-        setY(y)
-        return y
-    }
-    window.onscroll = () => {
-        const navBar = document.getElementById("navBar");
-        if (getHieght() < 70) {
-            navBar
-                .classList
-                .add("bg__purple");
-            navBar
-                .classList
-                .remove("bg__white");
-            setLogoColor("#fff");
-            navBar
-                .classList
-                .remove("nav__shadow");
+    const navBg = () => {
+        if (window.scrollY >= 70) {
+            setNavBar(true)
+            setLogoColor("#69247f")
         } else {
-            navBar
-                .classList
-                .add("bg__white");
-            navBar
-                .classList
-                .remove("bg__purple");
-            navBar
-                .classList
-                .add("nav__shadow")
-            setLogoColor("#69247f");
+            setNavBar(false)
+            setLogoColor("#fff")
         }
     }
+
+    window.addEventListener('scroll', navBg)
     return (
-        <div id="navBar" className="nav__bar row fixed row-center">
+        <div id="navBar" className={!navBar ? "nav__bar row fixed row-center bg__purple" : "nav__bar row fixed row-center bg__white nav__shadow"}>
             <div className="logo__container">
                 <svg
                     className="logo"
@@ -81,7 +62,7 @@ export default function NavBar() {
                 </svg>
             </div>
             <div className="navigation">
-                <Navigation color={logoColor} y={y}/>
+                <Navigation color={logoColor} />
             </div>
         </div>
     )

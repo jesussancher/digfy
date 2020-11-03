@@ -1,8 +1,35 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 export default function MenuMD(props) {
-    const [status,
-        setStatus] = useState(false)
+
+    const [navOffset,
+        setNavOffset] = useState({inicio: '0', nosotros: '0', asesorias: '0', ayuda: '0'})
+
+    const sectionOffset = () => {
+        const y = window.scrollY;
+        const inicio = document
+            .getElementById("inicio")
+            .offsetHeight;
+        const nosotros = document
+            .getElementById("nosotros")
+            .offsetHeight + inicio;
+        const asesorias = document
+            .getElementById("asesorias")
+            .offsetHeight + nosotros;
+        const ayuda = document
+            .getElementById("ayuda")
+            .offsetHeight + asesorias;
+        setNavOffset({
+            inicio: inicio - 1,
+            nosotros: nosotros - 1,
+            asesorias: asesorias - 1,
+            ayuda: ayuda - 1
+        })
+    }
+
+    useEffect(() => {
+        sectionOffset()
+    })
 
     return (
         <div
@@ -18,18 +45,39 @@ export default function MenuMD(props) {
             <div className="menu__right__container">
                 <div className="menu__md__container questrial__font">
                     <nav className="menu__md">
-                        <ul>
+                        <ul >
                             <li>
-                                <a href="">Inicio</a>
+                                <a
+                                    className
+                                    ={window.scrollY < navOffset.inicio
+                                    ? "active__md__link"
+                                    : ""}
+                                    href="#inicio">Inicio</a>
                             </li>
                             <li>
-                                <a href="">Nosotros</a>
+                                <a
+                                    className
+                                    ={window.scrollY >= navOffset.inicio && window.scrollY < navOffset.nosotros
+                                    ? "active__md__link"
+                                    : ""}
+                                    href="#nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="">Asesorías</a>
+                                <a
+                                    className
+                                    ={window.scrollY >= navOffset.nosotros && window.scrollY < navOffset.asesorias
+                                    ? "active__md__link"
+                                    : ""}
+                                    href="#asesorias">Asesorías</a>
                             </li>
                             <li>
-                                <a href="">Ayuda</a>
+                                <a
+                                    a
+                                    className
+                                    ={window.scrollY >= navOffset.asesorias && window.scrollY < navOffset.ayuda
+                                    ? "active__md__link"
+                                    : ""}
+                                    href="#ayuda">Ayuda</a>
                             </li>
                         </ul>
                     </nav>

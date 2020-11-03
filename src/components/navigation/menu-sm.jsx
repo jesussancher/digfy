@@ -1,12 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 export default function MenuSM(props) {
-    const [status,
-        setStatus] = useState(false)
 
-    const getStatus = (e) => {
-        setStatus(e)
-    }
     return (
         <div
             className="menu__small fixed"
@@ -23,16 +18,16 @@ export default function MenuSM(props) {
                     <nav className="menu__sm">
                         <ul>
                             <li>
-                                <a href="">Inicio</a>
+                                <a href="inicio">Inicio</a>
                             </li>
                             <li>
-                                <a href="">Nosotros</a>
+                                <a href="nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="">Asesorías</a>
+                                <a href="asesorias">Asesorías</a>
                             </li>
                             <li>
-                                <a href="">Ayuda</a>
+                                <a href="ayuda">Ayuda</a>
                             </li>
                         </ul>
                     </nav>
