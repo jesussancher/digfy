@@ -5,8 +5,8 @@ export default function Banner() {
         <div className="banner__container banner">
             <div className="banner__info">
                 <p className="banner__tag montserrat__font">#MejoresFinanzas</p>
-                <p className="banner__title montserrat__font">Tus cuentas en verde</p>
-                <a className="banner__btn btn montserrat__font" href="">Bioma financiero</a>
+                <p className="banner__title montserrat__font">Aprende a dejar esas culebras en $0</p>
+                <a className="banner__btn btn montserrat__font" href="">¿Cómo están mis finanzas?</a>
             </div>
             <div className="banner__img debug">
                 Img
