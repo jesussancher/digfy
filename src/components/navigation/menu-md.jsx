@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 export default function MenuMD(props) {
 
     const [navOffset,
-        setNavOffset] = useState({inicio: '0', nosotros: '0', asesorias: '0', ayuda: '0'})
+        setNavOffset] = useState({inicio: '0', nosotros: '0', diagnostico: '0', ayuda: '0'})
 
     const sectionOffset = () => {
         const y = window.scrollY;
@@ -13,16 +13,16 @@ export default function MenuMD(props) {
         const nosotros = document
             .getElementById("nosotros")
             .offsetHeight + inicio;
-        const asesorias = document
-            .getElementById("asesorias")
+        const diagnostico = document
+            .getElementById("diagnostico")
             .offsetHeight + nosotros;
         const ayuda = document
             .getElementById("ayuda")
-            .offsetHeight + asesorias;
+            .offsetHeight + diagnostico;
         setNavOffset({
             inicio: inicio - 1,
             nosotros: nosotros - 1,
-            asesorias: asesorias - 1,
+            diagnostico: diagnostico - 1,
             ayuda: ayuda - 1
         })
     }
@@ -64,14 +64,6 @@ export default function MenuMD(props) {
                             </li>
                             <li>
                                 <a
-                                    className
-                                    ={window.scrollY >= navOffset.nosotros && window.scrollY < navOffset.asesorias
-                                    ? "active__md__link"
-                                    : ""}
-                                    href="#asesorias">Asesorías</a>
-                            </li>
-                            <li>
-                                <a
                                     a
                                     className
                                     ={window.scrollY >= navOffset.asesorias && window.scrollY < navOffset.ayuda
@@ -83,7 +75,7 @@ export default function MenuMD(props) {
                     </nav>
                 </div>
                 <div className="menu__right__btn__container">
-                    <a className="menu__right__btn questrial__font" href="">Diagnóstico</a>
+                    <a className="menu__right__btn questrial__font" href="#diagnostico">Diagnóstico</a>
                 </div>
             </div>
         </div>

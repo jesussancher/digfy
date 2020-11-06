@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Nosotros() {
     return (
-        <div className="nosotros__container">
+        <div className="section__container">
             <h3 className="montserrat__font purple">Así es Digfy</h3>
-            <div className="nosotros__card__container">
+            <div className="section__content__container">
                 <div className="nosotros__card col__sm__12 col__md__9 row__lg__4">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-wallet"></i>
                     <h3 className="purple">Finanzas</h3>
                     <p>Cuentas en verde con un método dinámico y personalizado.</p>
                 </div>
@@ -22,7 +22,7 @@ export default function Nosotros() {
                 </div>
             </div>
             <div className="know__more__btn">
-                <a className="banner__btn btn montserrat__font" href="">Conoce más</a>
+                <a className="banner__btn btn montserrat__font" href="https://finanzaspersonalespracticas.com/" target="_blank">Conoce más</a>
             </div>
         </div>
     )

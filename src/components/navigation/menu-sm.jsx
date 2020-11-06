@@ -24,16 +24,13 @@ export default function MenuSM(props) {
                                 <a href="#nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="#asesorias">Asesorías</a>
-                            </li>
-                            <li>
                                 <a href="#ayuda">Ayuda</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
                 <div className="menu__right__btn__container">
-                    <a className="menu__center__btn questrial__font" href="">Diagnóstico</a>
+                    <a className="menu__center__btn questrial__font" href="#diagnostico">Diagnóstico</a>
                 </div>
             </div>
         </div>
