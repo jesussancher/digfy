@@ -11,6 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+import {SnackbarProvider, useSnackbar} from 'notistack';
+import Snackbar from '@material-ui/core/Snackbar';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -19,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120,
+        minWidth: 120
     },
     inputField: {
         marginTop: '20px'
-    },  
+    },
     addButton: {
         border: 'solid 1px #69247f',
         color: '#69247f',
@@ -39,15 +41,22 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function InOutAdder(props) {
+function MyApp(props) {
+    const {enqueueSnackbar} = useSnackbar();
+
     const classes = useStyles();
     const [open,
         setOpen] = React.useState(false);
     const [type,
         setType] = React.useState('');
+    const [price,
+        setPrice] = React.useState('');
 
     const handleChange = (event) => {
         setType(event.target.value || '');
+    };
+    const handleChangePrice = (event) => {
+        setPrice(event.target.value || '');
     };
 
     const handleClickOpen = () => {
@@ -58,24 +67,29 @@ export default function InOutAdder(props) {
         setOpen(false);
     };
 
+    const handleClickVariant = (variant) => {
+        // switch (props.props.inOut) {     case "ingresos":
+        enqueueSnackbar('¡Agregado exitosamente!', {variant});
+        //         break; }
+    };
     const newIngreso = () => {
-        props.newIngreso(type);
-        // handleClose();
+        if (type != '' && price != 0) {
+            props
+                .props
+                .newIngreso(type);
+            handleClickVariant('success')
+        }
     }
     return (
-        <div>
+        <React.Fragment>
             <Button className={classes.addButton} onClick={handleClickOpen}>Agregar ingreso</Button>
-            <Dialog
-                disableBackdropClick
-                disableEscapeKeyDown
-                open={open}
-                onClose={handleClose}>
+            <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Ingresos</DialogTitle>
                 <DialogContent>
                     <form className={classes.container}>
                         <FormControl required className={classes.formControl}>
                             <InputLabel id="demo-dialog-select-label">Tipo</InputLabel>
-                            {props.inOut == "ingreso"
+                            {props.props.inOut == "ingreso"
                                 ? <Select
                                         labelId="demo-dialog-select-label"
                                         id="typeIngreso"
@@ -83,13 +97,25 @@ export default function InOutAdder(props) {
                                         onChange={handleChange}
                                         input={< Input />}>
                                         <MenuItem value={"Salario"}>Salario</MenuItem>
-                                        <MenuItem value={"Honorario"}>Honorarios</MenuItem>
+                                        <MenuItem value={"Honorario"}>Honorario</MenuItem>
                                         <MenuItem value={"Efectivo"}>Efectivo</MenuItem>
                                     </Select>
                                 : <div></div>}
-                            <TextField className={classes.inputField} id="priceIngreso" type="number" label="¿Cuánto?" variant="outlined"/>
-                            <TextField className={classes.inputField} id="priceIngreso" type="text" label="¿Qué?" variant="outlined"/>
+                            <TextField
+                                className={classes.inputField}
+                                id="priceIngreso"
+                                value={price}
+                                onChange={handleChangePrice}
+                                type="number"
+                                label="¿Cuánto fue?"
+                                variant="outlined"/>
+                            <TextField
+                                className={classes.inputField}
+                                type="text"
+                                label="Descríbelo"
+                                variant="outlined"/>
                         </FormControl>
+
                     </form>
                 </DialogContent>
                 <DialogActions>
@@ -101,6 +127,19 @@ export default function InOutAdder(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </React.Fragment>
     );
+}
+
+export default function InOutAdder(props) {
+    return (
+        <SnackbarProvider
+            maxSnack={1}
+            anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center'
+        }}>
+            <MyApp props={props}/>
+        </SnackbarProvider>
+    )
 }

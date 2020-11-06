@@ -4,12 +4,10 @@ import InOutAdder from './in-out-adder';
 export default function AddIngreso(props) {
 
     const [ingresos,
-        setIngresos] = useState([{ type: 'Honorarios', price: '100000'}])
+        setIngresos] = useState([])
 
     const newIngreso = (type) => {
-        // e.preventDefault(); const desc_ =
-        // document.getElementById("descIngreso").value;
-        const type_ = type
+        const type_ = type;
         const price_ = document
             .getElementById("priceIngreso")
             .value;
