@@ -2,7 +2,7 @@
 :root {
     --main-purple: #69247f;
     --secondary-blue: #6bc1ce;
-    --complementary-bg: #f7f2f2;
+    --complementary-bg: #fff9f9;
     --dark-text: #4e4e4e;
 }
 body {
@@ -227,10 +227,10 @@ html {
 }
 .banner__title {
     margin: 5px 0 30px;
-    font-size: 39px;
+    font-size: 45px;
     font-weight: bold;
     color: #ffff;
-    line-height: 40px;
+    /* line-height: 40px; */
 }
 .banner__tag {
     margin: 0;
@@ -249,6 +249,8 @@ html {
 .section__container {
     height: auto;
     margin: 10vh 10%;
+    padding-bottom: 10vh;
+    border-bottom: solid 1px #ecdede;
 }
 .section__description {
     text-align: center;
@@ -265,7 +267,7 @@ html {
 }
 .nosotros__card .fas {
     font-size: 60px;
-    color: var(--main-purple);
+    color: var(--secondary-blue);
 }
 .know__more__btn {
     margin-top: 30px;
@@ -274,15 +276,16 @@ html {
 }
 
 /* Diagnostico */
+.form__ingresos{
+    height: 28vh;
+}
 .form__container,
 .legend__container {
     margin: 10px;
+    height: 45vh;
 }
 .form__container {
     position: relative;
-    background-color: #fff;
-    height: 58vh;
-    padding: 30px;
 }
 .form__main__container {
     height: 70vh;
@@ -318,7 +321,7 @@ html {
 .add__btn {
     width: 80%;
     position: absolute;
-    bottom: 30px;
+    bottom: -10vh;
     left: 10%;
     display: flex;
     justify-content: center;
@@ -328,6 +331,26 @@ html {
     border-bottom: solid 1px rgba(200,200,200,0.4);
     display: flex;
     align-items: center;
+}
+.type__card__container{
+    height: 28vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card__active{
+    border: solid 2px var(--main-purple);
+    color: var(--main-purple);
+    font-weight: bold;
+    transition: all 300ms ease-in-out;
+}
+.card__inactive{
+    border: solid 1px #e6e6e6;
+    color: #e6e6e6;
+}
+.card__active:hover{
+    background-color: #69247f;
+    color: #fff;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -418,6 +441,14 @@ html {
     .legend__container {
         width: 33%;
     }
+    .type__card{
+        border-radius: 10px;
+        height: 28vh;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -437,7 +468,11 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 h3 {
-    font-size: 20px;
+    font-size: 60px;
+    margin: 10px 0;
+}
+h4 {
+    font-size: 40px;
     margin: 10px 0;
 }
 p {
@@ -463,6 +498,9 @@ p {
 .fixed {
     position: fixed;
 }
+.relative{
+    position: relative;
+}
 /* Colour */
 .bg__purple {
     background-color: var(--main-purple);
@@ -472,6 +510,9 @@ p {
 }
 .purple {
     color: var(--main-purple);
+}
+.blue{
+    color: var(--secondary-blue);
 }
 .active__link {
     color: var(--secondary-blue) !important;

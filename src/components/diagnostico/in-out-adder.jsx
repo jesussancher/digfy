@@ -120,7 +120,7 @@ function MyApp(props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} className={classes.backButton}>
-                        Cancelar
+                        Cerrar
                     </Button>
                     <Button onClick={newIngreso} className={classes.addButton}>
                         Agregar
@@ -139,7 +139,18 @@ export default function InOutAdder(props) {
             vertical: 'top',
             horizontal: 'center'
         }}>
-            <MyApp props={props}/>
+            <MyApp props={props}/> {/* <div id="form__ingresos" className="">
+                {ingresos.length > 0
+                    ? ingresos.map(ingreso => {
+                        return (
+                            <div className="inout__card">
+                                <p>{ingreso.type}</p>
+                                <p>{ingreso.price}</p>
+                            </div>
+                        )
+                    })
+                    : <p className="text-center">Aún no tienes ingresos</p>}
+            </div> */}
         </SnackbarProvider>
     )
 }

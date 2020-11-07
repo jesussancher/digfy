@@ -9,7 +9,7 @@ export default function Nosotros() {
         setFormChart] = useState(0);
     const [ingresos, setIngresos] = useState();
     const [mainAddStatus,
-        setMainAddStatus] = useState(true);
+        setMainAddStatus] = useState(false);
     const getMainAddStatus = (e) => {
         setMainAddStatus(e)
     }
@@ -19,18 +19,19 @@ export default function Nosotros() {
 
     return (
         <div className="section__container">
-            <h3 className="montserrat__font purple">Entiende tus finanzas</h3>
+            <h3 className="montserrat__font text-center purple">Entiende tus finanzas</h3>
             <p className="section__description">
                 Saber cómo se encuentran tus finanzas y cómo mejorarlas es clave para que puedas
                 disfrutar de tus mayores deseos y puedas cumplir tus sueños. ¡Te ayudamos a
                 lograrlo!
             </p>
             <div className="section__content__container">
-                <div className="form__container nav__shadow">
-                    <MainAdd
+                <div className="form__container">
+                    {/* <MainAdd
                         title={formTitle[formChart]}
                         status={mainAddStatus}
-                        getStatus={getMainAddStatus}/> {!mainAddStatus
+                        getStatus={getMainAddStatus}/>  */}
+                        {!mainAddStatus
                         ? <AddSwitch formChart={formChart} getIngresos={getIngresos}/>
                         : <div></div>}
                 </div>
