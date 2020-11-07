@@ -276,7 +276,7 @@ html {
 }
 
 /* Diagnostico */
-.form__ingresos{
+.form__ingresos {
     height: 28vh;
 }
 .form__container,
@@ -326,29 +326,30 @@ html {
     display: flex;
     justify-content: center;
 }
-.inout__card{
+.inout__card {
     height: 8vh;
     border-bottom: solid 1px rgba(200,200,200,0.4);
     display: flex;
     align-items: center;
 }
-.type__card__container{
+.type__card__container {
     height: 28vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.card__active{
+.card__active {
     border: solid 2px var(--main-purple);
     color: var(--main-purple);
     font-weight: bold;
     transition: all 300ms ease-in-out;
+    cursor: pointer;
 }
-.card__inactive{
+.card__inactive {
     border: solid 1px #e6e6e6;
     color: #e6e6e6;
 }
-.card__active:hover{
+.card__active:hover {
     background-color: #69247f;
     color: #fff;
 }
@@ -441,7 +442,7 @@ html {
     .legend__container {
         width: 33%;
     }
-    .type__card{
+    .type__card {
         border-radius: 10px;
         height: 28vh;
         width: 30%;
@@ -498,7 +499,7 @@ p {
 .fixed {
     position: fixed;
 }
-.relative{
+.relative {
     position: relative;
 }
 /* Colour */
@@ -511,7 +512,7 @@ p {
 .purple {
     color: var(--main-purple);
 }
-.blue{
+.blue {
     color: var(--secondary-blue);
 }
 .active__link {

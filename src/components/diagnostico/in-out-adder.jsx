@@ -69,7 +69,7 @@ function MyApp(props) {
 
     const handleClickVariant = (variant) => {
         // switch (props.props.inOut) {     case "ingresos":
-        enqueueSnackbar('¡Agregado exitosamente!', {variant});
+        enqueueSnackbar('¡Agregado exitosamente!', {variant, autoHideDuration: 1000});
         //         break; }
     };
     const newIngreso = () => {
@@ -79,6 +79,9 @@ function MyApp(props) {
                 .newIngreso(type);
             handleClickVariant('success')
         }
+        setTimeout(() => {
+            handleClose()
+        }, [1000])
     }
     return (
         <React.Fragment>
@@ -111,11 +114,11 @@ function MyApp(props) {
                                 variant="outlined"/>
                             <TextField
                                 className={classes.inputField}
+                                id="descIngreso"
                                 type="text"
                                 label="Descríbelo"
                                 variant="outlined"/>
                         </FormControl>
-
                     </form>
                 </DialogContent>
                 <DialogActions>

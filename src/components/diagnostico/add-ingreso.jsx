@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import InOutAdder from './in-out-adder';
-
+import ListModal from './list-modal'
 export default function AddIngreso(props) {
 
     const [ingresos,
         setIngresos] = useState([]);
-
+    const [listOpen,
+        setListOpen] = useState(false);
     const [perType,
         setPerType] = useState({
         honorario: {
@@ -27,9 +28,12 @@ export default function AddIngreso(props) {
         const price_ = document
             .getElementById("priceIngreso")
             .value;
+        const desc_ = document
+            .getElementById("descIngreso")
+            .value;
         setIngresos([
             ...ingresos, {
-                // desc: desc_,
+                desc: desc_,
                 type: type_,
                 price: price_
             }
@@ -82,13 +86,19 @@ export default function AddIngreso(props) {
         typeCounter()
     }, [ingresos]);
 
+    const openList = () => {
+        setListOpen(true)
+    }
+    const closeList = () => {
+        setListOpen(false)
+    }
     return (
         <div className="form__ingresos relative">
             <div id="form__ingresos" className="">
                 <div className="form_ingresos__container">
                     <div className="type__card__container">
                         {perType.salario.total > 0
-                            ? <div className="type__card card__active text-center">Salario
+                            ? <div className="type__card card__active text-center" onClick={openList}>Salario
                                     <br></br>
                                     ${perType.salario.total}
                                     <br/>
@@ -123,6 +133,7 @@ export default function AddIngreso(props) {
             <div className="add__btn">
                 <InOutAdder newIngreso={newIngreso} inOut={"ingreso"}/>
             </div>
+            <ListModal open={listOpen} close={closeList} data={ingresos}/>
         </div>
     )
 }
