@@ -26,9 +26,9 @@ export default function Menu(props) {
         })
     }
 
-    useEffect(() => {
-        sectionOffset()
-    })
+    // useEffect(() => {
+    //     sectionOffset()
+    // })
 
     return (
         <div className="menu__container row">

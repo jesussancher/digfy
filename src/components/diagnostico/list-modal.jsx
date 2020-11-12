@@ -55,7 +55,7 @@ function stableSort(array, comparator) {
 
 const headCells = [
     {
-        id: 'name',
+        // id: 'name',
         numeric: false,
         disablePadding: true,
         label: 'Descripción'
@@ -176,8 +176,8 @@ const EnhancedTableToolbar = (props) => {
                         color="inherit"
                         variant="subtitle1"
                         component="div">
-                        {numSelected}
-                        seleccionado
+                        {numSelected + " "}
+                        Seleccionado
                     </Typography>
                 )
                 : (
@@ -186,16 +186,18 @@ const EnhancedTableToolbar = (props) => {
                         variant="h6"
                         id="tableTitle"
                         component="div">
-                        Ingresos
+                        {props.category}
                     </Typography>
                 )}
 
             {numSelected > 0
                 ? (
                     <Tooltip title="Delete">
+                        {/* <span onClick={props.delete}> */}
                         <IconButton aria-label="delete">
-                            <DeleteIcon/>
+                            {/* <DeleteIcon/> */}
                         </IconButton>
+                        {/* </span> */}
                     </Tooltip>
                 )
                 : (
@@ -219,7 +221,8 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         height: '0%',
         width: '100%',
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
+        boxShadow: '0 0 0 rgba(255,255,255,0)'
     },
     table: {
         '& th': {
@@ -296,7 +299,6 @@ export default function ListModal(props) {
         } else if (selectedIndex > 0) {
             newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1),);
         }
-
         setSelected(newSelected);
     };
 
@@ -310,24 +312,35 @@ export default function ListModal(props) {
     };
 
     const newInput = () => {
+        let newData = []
         for (let i = 0; i < props.data.length; i++) {
-            setRows([
-                ...rows,
-                createData(props.data[i].desc, '$'+ props.data[i].price),
-            ])
+            newData.push({
+                name: props.data[i].desc,
+                price: parseInt(props.data[i].price)
+            })
         }
+        setRows(newData)
     }
 
     useEffect(() => {
         newInput()
-    }, [props.data])
+    }, [props.data, rows])
+
+    const deleteItem = () => {
+        // const tempRows = rows; for (let i = 0; i < selected.length; i++) {
+        // tempRows.splice(rows.findIndex(x => x.name === selected[i]), 1) }
+        // setRows(tempRows)
+    }
 
     return (
         <div className={classes.root}>
-            <Dialog open={open}>
+            <Dialog open={open[0]}>
                 <DialogContent>
                     <Paper className={classes.paper}>
-                        <EnhancedTableToolbar numSelected={selected.length}/>
+                        <EnhancedTableToolbar
+                            numSelected={selected.length}
+                            category={props.category}
+                            delete={deleteItem()}/>
                         <TableContainer>
                             <Table
                                 className={classes.table}
@@ -344,34 +357,33 @@ export default function ListModal(props) {
                                     rowCount={rows.length}/>
                                 <TableBody>
                                     {stableSort(rows, getComparator(order, orderBy))
-                                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                         .map((row, index) => {
-                                            const isItemSelected = isSelected(row.name);
-                                            const labelId = `enhanced-table-checkbox-${index}`;
-
-                                            return (
-                                                <TableRow
-                                                    hover
-                                                    onClick={(event) => handleClick(event, row.name)}
-                                                    role="checkbox"
-                                                    aria-checked={isItemSelected}
-                                                    tabIndex={-1}
-                                                    key={row.name}
-                                                    selected={isItemSelected}>
-                                                    <TableCell padding="checkbox">
-                                                        <Checkbox
-                                                            checked={isItemSelected}
-                                                            inputProps={{
-                                                            'aria-labelledby': labelId
-                                                        }}/>
-                                                    </TableCell>
-                                                    <TableCell component="th" id={labelId} scope="row" padding="none">
-                                                        {row.name}
-                                                    </TableCell>
-                                                    <TableCell align="right">{row.price}</TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
+                                        const isItemSelected = isSelected(row.name);
+                                        const labelId = `enhanced-table-checkbox-${index}`;
+                                        return (
+                                            <TableRow
+                                                hover
+                                                onClick={(event) => handleClick(event, row.name)}
+                                                role="checkbox"
+                                                aria-checked={isItemSelected}
+                                                tabIndex={-1}
+                                                key={row.name}
+                                                selected={isItemSelected}>
+                                                <TableCell padding="checkbox">
+                                                    <Checkbox
+                                                        checked={isItemSelected}
+                                                        inputProps={{
+                                                        'aria-labelledby': labelId
+                                                    }}/>
+                                                </TableCell>
+                                                <TableCell component="th" id={labelId} scope="row" padding="none">
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="right">${row.price}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
                                     {/* {emptyRows > 0 && (
                                         <TableRow
                                             style={{

@@ -85,51 +85,106 @@ function MyApp(props) {
     }
     return (
         <React.Fragment>
-            <Button className={classes.addButton} onClick={handleClickOpen}>Agregar ingreso</Button>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Ingresos</DialogTitle>
-                <DialogContent>
-                    <form className={classes.container}>
-                        <FormControl required className={classes.formControl}>
-                            <InputLabel id="demo-dialog-select-label">Tipo</InputLabel>
-                            {props.props.inOut == "ingreso"
-                                ? <Select
-                                        labelId="demo-dialog-select-label"
-                                        id="typeIngreso"
-                                        value={type}
-                                        onChange={handleChange}
-                                        input={< Input />}>
-                                        <MenuItem value={"Salario"}>Salario</MenuItem>
-                                        <MenuItem value={"Honorario"}>Honorario</MenuItem>
-                                        <MenuItem value={"Efectivo"}>Efectivo</MenuItem>
-                                    </Select>
-                                : <div></div>}
-                            <TextField
-                                className={classes.inputField}
-                                id="priceIngreso"
-                                value={price}
-                                onChange={handleChangePrice}
-                                type="number"
-                                label="¿Cuánto fue?"
-                                variant="outlined"/>
-                            <TextField
-                                className={classes.inputField}
-                                id="descIngreso"
-                                type="text"
-                                label="Descríbelo"
-                                variant="outlined"/>
-                        </FormControl>
-                    </form>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} className={classes.backButton}>
-                        Cerrar
-                    </Button>
-                    <Button onClick={newIngreso} className={classes.addButton}>
-                        Agregar
-                    </Button>
-                </DialogActions>
-            </Dialog>
+
+            {props.props.inOut == "ingreso"
+                ? <Button className={classes.addButton} onClick={handleClickOpen}>Agregar ingreso</Button>
+                : props.props.inOut === "egreso"
+                    ? <Button className={classes.addButton} onClick={handleClickOpen}>Agregar egreso</Button>
+                    : <Button className={classes.addButton} onClick={handleClickOpen}>Agregar otra cosa</Button>
+}
+            {props.props.inOut == "ingreso"
+                ? <Dialog open={open} onClose={handleClose}>
+                        <DialogTitle>Ingresos</DialogTitle>
+                        <DialogContent>
+                            <form className={classes.container}>
+                                <FormControl required className={classes.formControl}>
+                                    <InputLabel id="demo-dialog-select-label">Tipo</InputLabel>
+                                    {props.props.inOut == "ingreso"
+                                        ? <Select
+                                                labelId="demo-dialog-select-label"
+                                                id="typeIngreso"
+                                                value={type}
+                                                onChange={handleChange}
+                                                input={< Input />}>
+                                                <MenuItem value={"Salario"}>Salario</MenuItem>
+                                                <MenuItem value={"Honorario"}>Honorario</MenuItem>
+                                                <MenuItem value={"Efectivo"}>Efectivo</MenuItem>
+                                            </Select>
+                                        : <div></div>}
+                                    <TextField
+                                        className={classes.inputField}
+                                        id="priceIngreso"
+                                        value={price}
+                                        onChange={handleChangePrice}
+                                        type="number"
+                                        label="¿Cuánto fue?"
+                                        variant="outlined"/>
+                                    <TextField
+                                        className={classes.inputField}
+                                        id="descIngreso"
+                                        type="text"
+                                        label="Descríbelo"
+                                        variant="outlined"/>
+                                </FormControl>
+                            </form>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose} className={classes.backButton}>
+                                Cerrar
+                            </Button>
+                            <Button onClick={newIngreso} className={classes.addButton}>
+                                Agregar
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                : props.props.inOut === "egreso"
+                    ? <Dialog open={open} onClose={handleClose}>
+                            <DialogTitle>Egresos</DialogTitle>
+                            <DialogContent>
+                                <form className={classes.container}>
+                                    <FormControl required className={classes.formControl}>
+                                        <InputLabel id="demo-dialog-select-label">Tipo</InputLabel>
+                                        {props.props.inOut == "egreso"
+                                            ? <Select
+                                                    labelId="demo-dialog-select-label"
+                                                    id="typeEgreso"
+                                                    value={type}
+                                                    onChange={handleChange}
+                                                    input={< Input />}>
+                                                    <MenuItem value={"Vitales"}>Vitales</MenuItem>
+                                                    <MenuItem value={"Financieros"}>Financieros</MenuItem>
+                                                    <MenuItem value={"Hormiga"}>Hormiga</MenuItem>
+                                                </Select>
+                                            : <div></div>}
+                                        <TextField
+                                            className={classes.inputField}
+                                            id="priceEgreso"
+                                            value={price}
+                                            onChange={handleChangePrice}
+                                            type="number"
+                                            label="¿Cuánto fue?"
+                                            variant="outlined"/>
+                                        <TextField
+                                            className={classes.inputField}
+                                            id="descEgreso"
+                                            type="text"
+                                            label="Descríbelo"
+                                            variant="outlined"/>
+                                    </FormControl>
+                                </form>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} className={classes.backButton}>
+                                    Cerrar
+                                </Button>
+                                <Button onClick={newIngreso} className={classes.addButton}>
+                                    Agregar
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                    : <Button className={classes.addButton} onClick={handleClickOpen}>Agregar otra cosa</Button>
+}
+
         </React.Fragment>
     );
 }
@@ -142,18 +197,7 @@ export default function InOutAdder(props) {
             vertical: 'top',
             horizontal: 'center'
         }}>
-            <MyApp props={props}/> {/* <div id="form__ingresos" className="">
-                {ingresos.length > 0
-                    ? ingresos.map(ingreso => {
-                        return (
-                            <div className="inout__card">
-                                <p>{ingreso.type}</p>
-                                <p>{ingreso.price}</p>
-                            </div>
-                        )
-                    })
-                    : <p className="text-center">Aún no tienes ingresos</p>}
-            </div> */}
+            <MyApp props={props}/>
         </SnackbarProvider>
     )
 }

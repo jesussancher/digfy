@@ -6,7 +6,7 @@
     --dark-text: #4e4e4e;
 }
 body {
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     background-color: var(--complementary-bg);
 }
 html {
@@ -221,19 +221,15 @@ html {
 /* Banner */
 .banner__container {
     position: relative;
-    bottom: 0;
     width: 100%;
     z-index: 200;
 }
 .banner__title {
-    margin: 5px 0 30px;
     font-size: 45px;
     font-weight: bold;
     color: #ffff;
-    /* line-height: 40px; */
 }
 .banner__tag {
-    margin: 0;
     font-size: 1.3rem;
     color: #ffff;
     letter-spacing: 2px;
@@ -360,13 +356,13 @@ html {
         display: none;
     }
     .banner__info {
-        position: absolute;
-        bottom: 0;
         padding-left: 10%;
         padding-right: 30px;
     }
     .banner__container {
-        height: 80vh;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
     /* Flex */
     .col__sm__12 {
@@ -385,13 +381,13 @@ html {
         display: none;
     }
     .banner__info {
-        position: absolute;
-        bottom: 0;
         padding-left: 10%;
         padding-right: 100px;
     }
     .banner__container {
-        height: 80vh;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
     .col__md__9 {
         width: 75%;
@@ -405,11 +401,11 @@ html {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 940px) {
+    .legend__title {
+        height: 13vh;
+    }
     .banner__info {
         width: 35%;
-        /* position: static; */
-        bottom: 0;
-        padding-left: 10%;
         padding-right: 30px;
     }
     .banner__info a {
@@ -421,9 +417,8 @@ html {
         height: 100%;
         display: inline-block;
     }
-    .banner__container {
-        display: flex;
-        align-items: end;
+    .banner__img img {
+        margin-top: 36vh;
     }
 }
 
@@ -440,7 +435,7 @@ html {
         width: 48%;
     }
     .legend__container {
-        width: 33%;
+        width: 43%;
     }
     .type__card {
         border-radius: 10px;
@@ -449,6 +444,12 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .banner__info {
+        width: 50%;
+    }
+    .banner__img {
+        width: 50%;
     }
 }
 
@@ -473,7 +474,11 @@ h3 {
     margin: 10px 0;
 }
 h4 {
-    font-size: 40px;
+    font-size: 30px;
+    margin: 10px 0;
+}
+h5 {
+    font-size: 30px;
     margin: 10px 0;
 }
 p {
