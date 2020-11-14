@@ -223,23 +223,19 @@ export default function Nosotros() {
         }
     }
     const classes = useStyles();
-    const [activeStep,
-        setActiveStep] = React.useState(0);
+
     const steps = getSteps();
 
     const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setFormChart((prevActiveStep) => prevActiveStep + 1)
+        if(formChart < 3){
+            setFormChart((prevActiveStep) => prevActiveStep + 1)
+        }
     };
 
     const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
         setFormChart((prevActiveStep) => prevActiveStep - 1)
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
     return (
         <div className="section__container">
             <h3 className="montserrat__font text-center purple">Entiende tus finanzas</h3>
@@ -386,7 +382,7 @@ export default function Nosotros() {
                                 ? (
                                     <div>
                                         <Typography className={classes.instructions}>All steps completed</Typography>
-                                        <Button onClick={handleReset}>Reset</Button>
+                                        {/* <Button onClick={handleReset}>Reset</Button> */}
                                     </div>
                                 )
                                 : (
