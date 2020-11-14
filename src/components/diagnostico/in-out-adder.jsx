@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     inputField: {
         marginTop: '20px'
     },
+    hidden:{
+        display: 'none'
+    },
     addButton: {
         border: 'solid 1px #69247f',
         color: '#69247f',
@@ -120,7 +123,7 @@ function MyApp(props) {
                                         label="¿Cuánto fue?"
                                         variant="outlined"/>
                                     <TextField
-                                        className={classes.inputField}
+                                        className={classes.inputField, classes.hidden}
                                         id="descIngreso"
                                         type="text"
                                         label="Descríbelo"
@@ -165,7 +168,7 @@ function MyApp(props) {
                                             label="¿Cuánto fue?"
                                             variant="outlined"/>
                                         <TextField
-                                            className={classes.inputField}
+                                            className={classes.inputField, classes.hidden}
                                             id="descEgreso"
                                             type="text"
                                             label="Descríbelo"

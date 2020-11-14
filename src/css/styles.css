@@ -331,7 +331,7 @@ html {
 .type__card__container {
     height: 28vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 .card__active {
@@ -348,6 +348,27 @@ html {
 .card__active:hover {
     background-color: #69247f;
     color: #fff;
+}
+.legend__btn__container{
+    cursor: pointer;
+    margin-top: 30px;
+    display: flex;
+    justify-content: start;
+}
+.legend__btn{
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+}
+.legend__btn__title{
+    margin: 0;
+}
+.divisa__switch{
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -402,7 +423,11 @@ html {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 940px) {
     .legend__title {
-        height: 13vh;
+        margin-bottom: 10px;
+    }
+    .lenged__text{
+        padding-left: 10px;
+        margin-bottom: 10px;
     }
     .banner__info {
         width: 35%;
