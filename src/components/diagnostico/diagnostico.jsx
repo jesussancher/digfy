@@ -12,6 +12,10 @@ import DeudasIcon from '../../assets/images/deudasIcon.jsx';
 import PropiedadesIcon from '../../assets/images/propiedadesIcon.jsx';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import StepConnector from '@material-ui/core/StepConnector';
+import PropTypes from 'prop-types';
+import Check from '@material-ui/icons/Check';
+import clsx from 'clsx';
 
 export default function Nosotros() {
     const [formTitle,
@@ -112,12 +116,94 @@ export default function Nosotros() {
         backButton: {
             marginRight: theme.spacing()
         },
+        step: {
+            backgroundColor: '#69247F'
+        },
         instructions: {
             marginTop: theme.spacing(),
             marginBottom: theme.spacing(1)
+        },
+        addButton: {
+            marginLeft: '15px',
+            border: 'solid 1px #69247f',
+            color: '#69247f',
+            transition: 'all 300ms ease',
+            '&:hover': {
+                color: '#fff',
+                backgroundColor: '#69247f'
+            }
+        },
+        backButton: {
+            color: '#69247f',
+            transition: 'all 300ms ease'
         }
     }));
+    const QontoConnector = withStyles({
+        alternativeLabel: {
+            top: 10,
+            left: 'calc(-50% + 16px)',
+            right: 'calc(50% + 16px)'
+        },
+        active: {
+            '& $line': {
+                borderColor: '#69247F'
+            }
+        },
+        completed: {
+            '& $line': {
+                borderColor: '#69247F'
+            }
+        },
+        line: {
+            borderColor: '#eaeaf0',
+            borderTopWidth: 3,
+            borderRadius: 1
+        }
+    })(StepConnector);
 
+    const useQontoStepIconStyles = makeStyles({
+        root: {
+            color: '#eaeaf0',
+            display: 'flex',
+            height: 22,
+            alignItems: 'center'
+        },
+        active: {
+            color: '#69247F'
+        },
+        circle: {
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            backgroundColor: 'currentColor'
+        },
+        completed: {
+            color: '#69247F',
+            zIndex: 1,
+            fontSize: 18
+        }
+    });
+
+    function QontoStepIcon(props) {
+        const classes = useQontoStepIconStyles();
+        const {active, completed} = props;
+
+        return (
+            <div
+                className={clsx(classes.root, {
+                [classes.active]: active
+            })}>
+                {completed
+                    ? <Check className={classes.completed}/>
+                    : <div className={classes.circle}/>}
+            </div>
+        );
+    }
+
+    QontoStepIcon.propTypes = {
+        active: PropTypes.bool,
+        completed: PropTypes.bool
+    };
     const getSteps = () => {
         return ['', '', '', ''];
     }
@@ -288,10 +374,10 @@ export default function Nosotros() {
                         </div>
                     </div>
                     <div className="legend_stepper">
-                        <Stepper className={classes.root} activeStep={formChart} alternativeLabel>
+                        <Stepper className={classes.root} activeStep={formChart}>
                             {steps.map((label) => (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
+                                <Step key={label} connector={< QontoConnector />}>
+                                    <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
                                 </Step>
                             ))}
                         </Stepper>
@@ -313,7 +399,7 @@ export default function Nosotros() {
                                                 className={classes.backButton}>
                                                 Atrás
                                             </Button>
-                                            <Button variant="contained" color="primary" onClick={handleNext}>
+                                            <Button className={classes.addButton} onClick={handleNext}>
                                                 {formChart === steps.length - 1
                                                     ? 'Confirmar'
                                                     : 'Siguiente'}
