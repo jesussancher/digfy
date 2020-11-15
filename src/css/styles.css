@@ -348,23 +348,14 @@ html {
     background-color: #69247f;
     color: #fff;
 }
-.legend__btn__container{
+.legend__btn__container {
     cursor: pointer;
     margin-top: 30px;
     display: flex;
     justify-content: start;
 }
-.legend__btn{
-    margin-left: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 15%;
-}
-.legend__btn__title{
-    margin: 0;
-}
-.divisa__switch{
+
+.divisa__switch {
     display: flex;
     justify-content: end;
     align-items: center;
@@ -393,6 +384,52 @@ html {
         justify-content: center;
         align-items: center;
     }
+    .section__content__container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .legend__btn__container {
+        margin-left: -20px;
+        display: flex;
+        justify-content: center;
+    }
+    .type__card__container{
+        flex-direction: column;
+    }
+    .legend__btn {
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 18%;
+    }
+    .legend__btn__title {
+        margin: 0;
+    }
+    .legend__container {
+        width: 100%;
+    }
+    .legend_stepper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .form__container{
+        width: 100%;
+    }
+    .type__card {
+        border-radius: 10px;
+        margin-top: 20px;
+        height: 28vh;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -417,6 +454,47 @@ html {
         justify-content: center;
         align-items: center;
     }
+    .section__content__container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .legend__btn__container {
+        display: flex;
+        justify-content: center;
+    }
+    .legend__btn {
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80px;
+    }
+    .legend__btn__title {
+        margin: 0;
+    }
+    .legend__container {
+        width: 100%;
+    }
+    .legend_stepper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .form__container{
+        width: 100%;
+    }
+    .type__card {
+        border-radius: 10px;
+        height: 28vh;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -424,7 +502,7 @@ html {
     .legend__title {
         margin-bottom: 10px;
     }
-    .lenged__text{
+    .lenged__text {
         padding-left: 10px;
         margin-bottom: 10px;
     }
@@ -454,6 +532,7 @@ html {
     .section__content__container {
         flex-direction: row;
         justify-content: space-between;
+        text-align: start;
     }
     .form__container {
         width: 48%;
@@ -474,6 +553,16 @@ html {
     }
     .banner__img {
         width: 50%;
+    }
+    .legend__btn {
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 18%;
+    }
+    .legend__btn__title {
+        margin: 0;
     }
 }
 

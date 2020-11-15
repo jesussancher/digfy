@@ -369,7 +369,7 @@ export default function Nosotros() {
                                 className="legend__btn__title">Propiedades</p>
                         </div>
                     </div>
-                    <div className="legend_stepper">
+                    <div  style={{marginLeft: '15px'}} className="legend_stepper">
                         <Stepper className={classes.root} activeStep={formChart}>
                             {steps.map((label) => (
                                 <Step key={label} connector={< QontoConnector />}>
@@ -388,7 +388,7 @@ export default function Nosotros() {
                                 : (
                                     <div>
                                         {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
-                                        <div>
+                                        <div >
                                             <Button
                                                 disabled={formChart === 0}
                                                 onClick={handleBack}
