@@ -276,7 +276,7 @@ html {
 }
 .form__container,
 .legend__container {
-    margin: 10px;
+    /* margin: 10px; */
     height: 45vh;
 }
 .form__container {
@@ -362,7 +362,6 @@ html {
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
     .banner__img {
         display: none;
     }
@@ -407,6 +406,9 @@ html {
     }
     .legend__btn__title {
         margin: 0;
+    }
+    .legend__title{
+        margin-top: 40px;
     }
     .legend__container {
         width: 100%;
@@ -473,6 +475,9 @@ html {
     }
     .legend__btn__title {
         margin: 0;
+    }
+    .legend__title{
+        margin-top: 40px;
     }
     .legend__container {
         width: 100%;
