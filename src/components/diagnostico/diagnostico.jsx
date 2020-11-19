@@ -16,20 +16,33 @@ import StepConnector from '@material-ui/core/StepConnector';
 import PropTypes from 'prop-types';
 import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
+import firebase from "firebase/app";
+import 'firebase/database';
+import ErrorDialog from './dialog/error'
 
 export default function Nosotros() {
-    const [formTitle,
-        setFormTitle] = useState(["Ingresos", "Gastos", "Activos", "Deudas"]);
+    // const [formTitle,     setFormTitle] = useState(["Ingresos", "Gastos",
+    // "Activos", "Deudas"]);
+
     const [formChart,
         setFormChart] = useState(0);
     const [ingresos,
-        setIngresos] = useState();
+        setIngresos] = useState([]);
     const [egresos,
-        setEgresos] = useState();
+        setEgresos] = useState([]);
     const [deudas,
-        setDeudas] = useState();
+        setDeudas] = useState([]);
     const [propiedades,
-        setPropiedades] = useState();
+        setPropiedades] = useState([]);
+    const [data,
+        setData] = useState({
+        userName: '',
+        useEmail: '',
+        ingresos: [],
+        egresos: [],
+        propiedades: [],
+        deudas: []
+    });
     const [state,
         setState] = useState(false);
     const [mainAddStatus,
@@ -37,6 +50,7 @@ export default function Nosotros() {
     const getMainAddStatus = (e) => {
         setMainAddStatus(e)
     }
+
     const getIngresos = (e) => {
         setIngresos(e);
     }
@@ -54,13 +68,22 @@ export default function Nosotros() {
         setFormChart(e)
     }
 
+    const getData = () => {
+        setData({
+            ...data,
+            ingresos: ingresos,
+            egresos: egresos,
+            propiedades: propiedades,
+            deudas: deudas
+        })
+    }
     const legend = [
         {
-            title: 'Mas que números, son resultados de tus esfuerzos <3',
+            title: 'Mas que números, son resultados de tus esfuerzos',
             desc: 'Tu sueldo, o tus ingresos como independiente, cada centavo cuenta para tus finan' +
                     'zas.'
         }, {
-            title: 'Todo lo que salga de tu bolsillo que no volverá :/',
+            title: 'Todo lo que salga de tu bolsillo que no volverá',
             desc: 'El mercado, la cuota del carro, hasta las cenas en tu restaurente favorito cuent' +
                     'an.'
         }, {
@@ -208,26 +231,12 @@ export default function Nosotros() {
         return ['', '', '', ''];
     }
 
-    const getStepContent = (stepIndex) => {
-        switch (stepIndex) {
-            case 0:
-                return 'Select campaign settings...';
-            case 1:
-                return 'What is an ad group anyways?';
-            case 2:
-                return 'This is the bit I really care about!';
-            case 3:
-                return 'This is the bit I really care about!';
-            default:
-                return 'Unknown stepIndex';
-        }
-    }
     const classes = useStyles();
 
     const steps = getSteps();
 
     const handleNext = () => {
-        if(formChart < 3){
+        if (formChart < 3) {
             setFormChart((prevActiveStep) => prevActiveStep + 1)
         }
     };
@@ -236,8 +245,159 @@ export default function Nosotros() {
         setFormChart((prevActiveStep) => prevActiveStep - 1)
     };
 
+    // Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyDOWzd52YOpksTuSbXL91BQjLVLXsBFdyM",
+        authDomain: "digfy-b76a1.firebaseapp.com",
+        databaseURL: "https://digfy-b76a1.firebaseio.com",
+        projectId: "digfy-b76a1",
+        storageBucket: "digfy-b76a1.appspot.com",
+        messagingSenderId: "922940835920",
+        appId: "1:922940835920:web:bb51da45bb932c45f2e955",
+        measurementId: "G-2ZHT2TS42Q"
+    };
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig)
+    }
+
+    const saveContactForm = () => {
+        firebase
+            .database()
+            .ref('users/' + parseInt(usersQty + 1))
+            .push(data)
+            .then(function () {
+                // props.getUser(data)
+                alert('mensaje guardado')
+                // setUser(data, true, "Bienvenido!")
+            })
+            .catch(function (error) {
+                alert(error.message)
+                // setUser(data, true, "Intenta Nuevamente :(")
+            });
+    }
+    const [usersQty,
+        setUsersQty] = useState(0);
+
+    const getContactForm = () => {
+        let dataSet
+        let len = 0;
+        const data = firebase
+            .database()
+            .ref('users');
+        data.on('value', function (snapshot) {
+            dataSet = snapshot.val()
+        })
+        for (let i in dataSet) {
+            if (dataSet.hasOwnProperty(i)) {
+                len++
+            }
+        }
+        setUsersQty(len);
+        console.log(len)
+    }
+    const [inputVerify,
+        setInputVerify] = useState({ingresos: false, egresos: false, deudas: false, propiedades: false})
+
+    useEffect(() => {
+        getContactForm()
+        getData()
+        if (ingresos.length != 0) {
+            setIngColor('#6bc1ce')
+            setInputVerify({
+                ...inputVerify,
+                ingresos: true
+            })
+        }
+    }, [ingresos]);
+
+    useEffect(() => {
+        getContactForm()
+        getData()
+        if (egresos.length != 0) {
+            setEgColor('#6bc1ce')
+            setInputVerify({
+                ...inputVerify,
+                egresos: true
+            })
+        }
+    }, [egresos]);
+
+    useEffect(() => {
+        getContactForm()
+        getData()
+        if (propiedades.length != 0) {
+            setProColor('#6bc1ce')
+            setInputVerify({
+                ...inputVerify,
+                propiedades: true
+            })
+        }
+    }, [propiedades]);
+
+    useEffect(() => {
+        getContactForm()
+        getData()
+        if (deudas.length != 0) {
+            setDeColor('#6bc1ce')
+            setInputVerify({
+                ...inputVerify,
+                deudas: true
+            })
+        }
+    }, [deudas])
+
+    const [ingColor,
+        setIngColor] = useState('#6bc1ce');
+    const [egColor,
+        setEgColor] = useState('#6bc1ce');
+    const [deColor,
+        setDeColor] = useState('#6bc1ce');
+    const [proColor,
+        setProColor] = useState('#6bc1ce');
+    const [ready,
+        setReady] = useState(0);
+    const [errorOpen,
+        setErrorOpen] = useState(false);
+    const errorClose = (e) => {
+        setErrorOpen(e)
+    }
+    const isReady = () => {
+        let ready = 0;
+        if (!inputVerify.ingresos) {
+            setIngColor('red')
+        } else {
+            setIngColor('#6bc1ce')
+            ready++
+        }
+        if (!inputVerify.egresos) {
+            setEgColor('red')
+        } else {
+            setEgColor('#6bc1ce')
+            ready++
+        }
+        if (!inputVerify.deudas) {
+            setDeColor('red')
+        } else {
+            setDeColor('#6bc1ce')
+            ready++
+        }
+        if (!inputVerify.propiedades) {
+            setProColor('red')
+        } else {
+            setProColor('#6bc1ce')
+            ready++
+        }
+        setReady(ready);
+        setErrorOpen(true);
+        ready == 4
+            ? saveContactForm()
+            : console.log("Falta llenar campos")
+    }
+
     return (
         <div className="section__container">
+            {/* <button onClick={() => isReady()}>Prueba</button>
+            <button onClick={() => getContactForm()}>Prueba Get</button> */}
             <h3 className="montserrat__font text-center purple">Entiende tus finanzas</h3>
             <p className="section__description">
                 Saber cómo se encuentran tus finanzas y cómo mejorarlas es clave para que puedas
@@ -273,22 +433,22 @@ export default function Nosotros() {
                             onMouseLeave={() => buttonHover(100)}
                             className="legend__btn">
                             <IngresosIcon
-                                color={formChart == 0
+                                color={formChart === 0
                                 ? '#69247F'
-                                : btnHover == 0
+                                : btnHover === 0
                                     ? '#69247F'
-                                    : '#6bc1ce'}/>
+                                    : ingColor}/>
                             <p
-                                style={formChart == 0
+                                style={formChart === 0
                                 ? {
                                     color: '#69247F'
                                 }
-                                : btnHover == 0
+                                : btnHover === 0
                                     ? {
                                         color: '#69247F'
                                     }
                                     : {
-                                        color: '#6bc1ce'
+                                        color: ingColor
                                     }}
                                 className="legend__btn__title">Ingresos</p>
                         </div>
@@ -298,22 +458,22 @@ export default function Nosotros() {
                             onMouseLeave={() => buttonHover(100)}
                             className="legend__btn">
                             <EgresosIcon
-                                color={formChart == 1
+                                color={formChart === 1
                                 ? '#69247F'
-                                : btnHover == 1
+                                : btnHover === 1
                                     ? '#69247F'
-                                    : '#6bc1ce'}/>
+                                    : egColor}/>
                             <p
-                                style={formChart == 1
+                                style={formChart === 1
                                 ? {
                                     color: '#69247F'
                                 }
-                                : btnHover == 1
+                                : btnHover === 1
                                     ? {
                                         color: '#69247F'
                                     }
                                     : {
-                                        color: '#6bc1ce'
+                                        color: egColor
                                     }}
                                 className="legend__btn__title">Egresos</p>
                         </div>
@@ -323,22 +483,22 @@ export default function Nosotros() {
                             onMouseLeave={() => buttonHover(100)}
                             className="legend__btn">
                             <DeudasIcon
-                                color={formChart == 2
+                                color={formChart === 2
                                 ? '#69247F'
-                                : btnHover == 2
+                                : btnHover === 2
                                     ? '#69247F'
-                                    : '#6bc1ce'}/>
+                                    : deColor}/>
                             <p
-                                style={formChart == 2
+                                style={formChart === 2
                                 ? {
                                     color: '#69247F'
                                 }
-                                : btnHover == 2
+                                : btnHover === 2
                                     ? {
                                         color: '#69247F'
                                     }
                                     : {
-                                        color: '#6bc1ce'
+                                        color: deColor
                                     }}
                                 className="legend__btn__title">
                                 Créditos</p>
@@ -349,27 +509,31 @@ export default function Nosotros() {
                             onMouseLeave={() => buttonHover(100)}
                             className="legend__btn">
                             <PropiedadesIcon
-                                color={formChart == 3
+                                color={formChart === 3
                                 ? '#69247F'
-                                : btnHover == 3
+                                : btnHover === 3
                                     ? '#69247F'
-                                    : '#6bc1ce'}/>
+                                    : proColor}/>
                             <p
-                                style={formChart == 3
+                                style={formChart === 3
                                 ? {
                                     color: '#69247F'
                                 }
-                                : btnHover == 3
+                                : btnHover === 3
                                     ? {
                                         color: '#69247F'
                                     }
                                     : {
-                                        color: '#6bc1ce'
+                                        color: proColor
                                     }}
-                                className="legend__btn__title">Propiedades</p>
+                                className="legend__btn__title">Bienes</p>
                         </div>
                     </div>
-                    <div  style={{marginLeft: '15px'}} className="legend_stepper">
+                    <div
+                        style={{
+                        marginLeft: '15px'
+                    }}
+                        className="legend_stepper">
                         <Stepper className={classes.root} activeStep={formChart}>
                             {steps.map((label) => (
                                 <Step key={label} connector={< QontoConnector />}>
@@ -395,7 +559,11 @@ export default function Nosotros() {
                                                 className={classes.backButton}>
                                                 Atrás
                                             </Button>
-                                            <Button className={classes.addButton} onClick={handleNext}>
+                                            <Button
+                                                className={classes.addButton}
+                                                onClick={() => formChart != 3
+                                                ? handleNext()
+                                                : isReady()}>
                                                 {formChart === steps.length - 1
                                                     ? 'Confirmar'
                                                     : 'Siguiente'}
@@ -407,6 +575,7 @@ export default function Nosotros() {
                     </div>
                 </div>
             </div>
+            <ErrorDialog data={inputVerify} open={errorOpen} close={errorClose}/>
         </div>
     )
 }

@@ -8,12 +8,12 @@ export default function Nosotros() {
                 <div className="nosotros__card col__sm__12 col__md__9 row__lg__4">
                     <i class="fas fa-wallet"></i>
                     <h4 className="purple">Finanzas</h4>
-                    <p>Cuentas en verde con un método dinámico y personalizado.</p>
+                    <p>Cuentas claras con un método práctico, validado y personalizado.</p>
                 </div>
                 <div className="nosotros__card col__sm__12 col__md__9 row__lg__4">
                     <i class="fas fa-piggy-bank"></i>
                     <h4 className="purple">Personales</h4>
-                    <p>Optimiza de manera eficiente tu bioma financiero.</p>
+                    <p>Optimiza de manera eficiente la reducción de tus deudas.</p>
                 </div>
                 <div className="nosotros__card col__sm__12 col__md__9 row__lg__4">
                     <i class="fas fa-comments-dollar"></i>

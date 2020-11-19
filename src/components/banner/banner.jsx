@@ -1,5 +1,5 @@
 import React from 'react'
-
+import bannerImg from '../../assets/images/banner.svg'
 export default function Banner() {
     return (
         <div className="banner__container">
@@ -9,7 +9,7 @@ export default function Banner() {
                 <a className="banner__btn btn montserrat__font" href="#diagnostico">¿Cómo están mis finanzas?</a>
             </div>
             <div className="banner__img">
-                <img src="https://blush.design/api/download?shareUri=DkjAQu_Tv&w=650&h=650&fm=png" alt="Banner"/>
+                <img src={bannerImg} alt="Banner"/>
             </div>
         </div>
     )
