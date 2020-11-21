@@ -20,8 +20,9 @@ import firebase from "firebase/app";
 import 'firebase/database';
 import ErrorDialog from './dialog/error';
 import DataConfirm from './dialog/data-confirm';
+import ProcessConfirm from './dialog/process-confirm';
 
-export default function Nosotros() {
+export default React.memo(function Nosotros() {
     // const [formTitle,     setFormTitle] = useState(["Ingresos", "Gastos",
     // "Activos", "Deudas"]);
 
@@ -37,9 +38,9 @@ export default function Nosotros() {
         setPropiedades] = useState([]);
     const [data,
         setData] = useState({
-        userName: '',
-        useEmail: '',
-        dataConfirm: 'false',
+        name: '',
+        email: '',
+        confirmation: 'false',
         ingresos: [],
         egresos: [],
         propiedades: [],
@@ -262,23 +263,46 @@ export default function Nosotros() {
         firebase.initializeApp(firebaseConfig)
     }
 
+    const [processResult,
+        setProcessResult] = useState("success")
+
     const saveContactForm = () => {
         firebase
             .database()
             .ref('users/' + parseInt(usersQty + 1))
             .push(data)
             .then(function () {
-                // props.getUser(data)
-                alert('mensaje guardado')
-                // setUser(data, true, "Bienvenido!")
+                setProcessResult("success")
+                setTimeout(() => {
+                    confirmClose(false)
+                    setProcessOpen(true)
+                }, [300])
+                console.log('mensaje guardado')
             })
             .catch(function (error) {
-                alert(error.message)
-                // setUser(data, true, "Intenta Nuevamente :(")
+                setProcessResult("fail")
+                setTimeout(() => {
+                    setProcessOpen(true)
+                }, [300])
+                console.log(error.message)
             });
     }
     const [usersQty,
         setUsersQty] = useState(0);
+
+    const saveUserData = (e) => {
+        setData({
+            ...data,
+            [Object.keys(e)[0]]: Object.values(e)[0]
+        })
+    }
+
+    const confirmation = (e) => {
+        setData({
+            ...data,
+            confirmation: e
+        })
+    }
 
     const getContactForm = () => {
         let dataSet
@@ -295,6 +319,7 @@ export default function Nosotros() {
             }
         }
         setUsersQty(len);
+        localStorage.setItem(len, dataSet);
         console.log(len)
     }
     const [inputVerify,
@@ -358,6 +383,7 @@ export default function Nosotros() {
         setProColor] = useState('#6bc1ce');
     const [ready,
         setReady] = useState(0);
+
     const [errorOpen,
         setErrorOpen] = useState(false);
     const errorClose = (e) => {
@@ -368,6 +394,12 @@ export default function Nosotros() {
     const confirmClose = (e) => {
         setConfirmOpen(e)
     }
+    const [processOpen,
+        setProcessOpen] = useState(false);
+    const processClose = (e) => {
+        setProcessOpen(e)
+    }
+
     const isReady = () => {
         let ready = 0;
         if (!inputVerify.ingresos) {
@@ -395,7 +427,7 @@ export default function Nosotros() {
             ready++
         }
         setReady(ready);
-        
+
         ready == 4
             ? setConfirmOpen(true)
             : setErrorOpen(true);
@@ -583,7 +615,14 @@ export default function Nosotros() {
                 </div>
             </div>
             <ErrorDialog data={inputVerify} open={errorOpen} close={errorClose}/>
-            <DataConfirm data={inputVerify} open={confirmOpen} close={confirmClose}/>
+            <ProcessConfirm result={processResult} open={processOpen} close={processClose}/>
+            <DataConfirm
+                data={inputVerify}
+                open={confirmOpen}
+                close={confirmClose}
+                saveInfo={saveContactForm}
+                getUserData={saveUserData}
+                confirmation={confirmation}/>
         </div>
     )
-}
+})

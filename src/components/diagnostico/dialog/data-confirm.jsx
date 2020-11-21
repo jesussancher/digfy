@@ -16,6 +16,8 @@ import Terms from './terms';
 export default function DataConfirm(props) {
     const [open,
         setOpen] = React.useState(false);
+    const [userData,
+        setUserData] = React.useState({name: '', email: ''})
     const [state,
         setState] = React.useState({checkedG: false});
     const handleClickOpen = () => {
@@ -70,11 +72,28 @@ export default function DataConfirm(props) {
 
     const classes = useStyles();
     const handleChange = (event) => {
+        props.confirmation(event.target.checked)
         setState({
             ...state,
             [event.target.name]: event.target.checked
         });
     };
+
+    const handleDataChangeName = (event) => {
+        props.getUserData({name: event.target.value})
+        setUserData({
+            ...userData,
+            name: event.target.value
+        })
+    }
+
+    const handleDataChangeEmail = (event) => {
+        props.getUserData({email: event.target.value})
+        setUserData({
+            ...userData,
+            email: event.target.value
+        })
+    }
 
     const [termsOpen,
         setTermsOpen] = React.useState(false);
@@ -107,15 +126,19 @@ export default function DataConfirm(props) {
                         <TextField
                             required
                             autoFocus
+                            onChange={handleDataChangeName}
                             margin="dense"
                             id="name"
+                            name="name"
                             label="Nombre"
                             type="text"
                             fullWidth/>
                         <TextField
                             required
                             autoFocus
+                            onChange={handleDataChangeEmail}
                             margin="dense"
+                            name="email"
                             id="email"
                             label="Correo Electrónico"
                             type="email"
@@ -143,8 +166,17 @@ export default function DataConfirm(props) {
                     <Button className={classes.backButton} onClick={handleClose} color="primary">
                         Cancelar
                     </Button>
-                    <Button className={classes.addButton} onClick={handleClose} color="primary">
-                        Enviar
+                    <Button
+                        className={classes.addButton}
+                        onClick={ () => userData.name == ''
+                        ? alert("Falta nombre")
+                        : !userData.email.includes("@")
+                            ? alert("Falta email")
+                            : !state.checkedG
+                                ? alert("Confirma datos")
+                                : props.saveInfo()}
+                        color="primary">
+                        Generar diagnóstico
                     </Button>
                 </DialogActions>
             </Dialog>
