@@ -18,7 +18,8 @@ import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import firebase from "firebase/app";
 import 'firebase/database';
-import ErrorDialog from './dialog/error'
+import ErrorDialog from './dialog/error';
+import DataConfirm from './dialog/data-confirm';
 
 export default function Nosotros() {
     // const [formTitle,     setFormTitle] = useState(["Ingresos", "Gastos",
@@ -38,6 +39,7 @@ export default function Nosotros() {
         setData] = useState({
         userName: '',
         useEmail: '',
+        dataConfirm: 'false',
         ingresos: [],
         egresos: [],
         propiedades: [],
@@ -361,6 +363,11 @@ export default function Nosotros() {
     const errorClose = (e) => {
         setErrorOpen(e)
     }
+    const [confirmOpen,
+        setConfirmOpen] = useState(false);
+    const confirmClose = (e) => {
+        setConfirmOpen(e)
+    }
     const isReady = () => {
         let ready = 0;
         if (!inputVerify.ingresos) {
@@ -388,10 +395,10 @@ export default function Nosotros() {
             ready++
         }
         setReady(ready);
-        setErrorOpen(true);
+        
         ready == 4
-            ? saveContactForm()
-            : console.log("Falta llenar campos")
+            ? setConfirmOpen(true)
+            : setErrorOpen(true);
     }
 
     return (
@@ -576,6 +583,7 @@ export default function Nosotros() {
                 </div>
             </div>
             <ErrorDialog data={inputVerify} open={errorOpen} close={errorClose}/>
+            <DataConfirm data={inputVerify} open={confirmOpen} close={confirmClose}/>
         </div>
     )
 }

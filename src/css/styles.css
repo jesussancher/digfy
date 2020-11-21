@@ -273,6 +273,7 @@ html {
 /* Diagnostico */
 .form__ingresos {
     height: 28vh;
+    padding-bottom: 25px;
 }
 .form__container,
 .legend__container {
