@@ -27,8 +27,16 @@ export default function ProcessConfirm(props) {
     }, [props.open]);
 
     const handleClose = () => {
-        setOpen(false);
-        props.close(false)
+        if (props.result === "success") {
+            document
+                .getElementById("resultados")
+                .scrollIntoView();
+            setOpen(false);
+            props.close(false)
+        } else {
+            setOpen(false);
+            props.close(false)
+        }
     };
 
     const useStyles = makeStyles((theme) => ({

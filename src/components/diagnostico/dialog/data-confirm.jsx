@@ -12,12 +12,19 @@ import {makeStyles, withStyles} from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Terms from './terms';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props}/>;
+}
 
 export default function DataConfirm(props) {
     const [open,
         setOpen] = React.useState(false);
     const [userData,
-        setUserData] = React.useState({name: '', email: ''})
+        setUserData] = React.useState({name: '', email: '', save: 0})
     const [state,
         setState] = React.useState({checkedG: false});
     const handleClickOpen = () => {
@@ -44,6 +51,12 @@ export default function DataConfirm(props) {
     })((props) => <Checkbox color="default" {...props}/>);
 
     const useStyles = makeStyles((theme) => ({
+        root: {
+            width: '100%',
+            '& > * + *': {
+                marginTop: theme.spacing(2)
+            }
+        },
         content: {
             display: 'flex',
             flexWrap: 'wrap'
@@ -67,6 +80,9 @@ export default function DataConfirm(props) {
         backButton: {
             color: '#69247f',
             transition: 'all 300ms ease'
+        },
+        separator: {
+            marginBottom: '30px'
         }
     }));
 
@@ -95,20 +111,43 @@ export default function DataConfirm(props) {
         })
     }
 
+    const handleDataChangeSave = (event) => {
+        props.getUserData({save: event.target.value})
+        setUserData({
+            ...userData,
+            save: event.target.value
+        })
+    }
+
     const [termsOpen,
         setTermsOpen] = React.useState(false);
-
+    const [alertOpen,
+        setAlertOpen] = React.useState(false);
+    const [alert,
+        setAlert] = React.useState("Ingresa tu nombre")
     const termsClose = (e) => {
         setTermsOpen(e)
     }
+    const handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setAlertOpen(false);
+    };
+    const handleOpenAlert = (message, event) => {
+        setAlert(message);
+        setAlertOpen(event)
+    }
+
     return (
         <div>
             <Dialog
                 className={classes.dialog}
-                open={open}
+                open={true}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">¡Estamos listos!</DialogTitle>
+
                 <DialogContent className={classes.content}>
                     <div>
                         <img
@@ -118,7 +157,26 @@ export default function DataConfirm(props) {
                             src={CroodWaving}
                             alt="confirm"/>
                     </div>
+
                     <DialogContent className={classes.textContent}>
+                        <DialogContentText>
+                            Pero antes de continuar
+                        </DialogContentText>
+                        <TextField
+                            className={classes.separator}
+                            required
+                            autoFocus
+                            onChange={handleDataChangeSave}
+                            margin="dense"
+                            id="save"
+                            name="save"
+                            label="¿Cuál es tu porcentaje de ahorro al mes?"
+                            type="number"
+                            InputProps={{
+                            endAdornment: <InputAdornment position="end">%</InputAdornment>
+                        }}
+                            fullWidth/>
+
                         <DialogContentText>
                             ¡Queremos seguir en contacto contigo! Para nosotros es importante apoyarte a
                             mejorar tus cuentas.
@@ -168,19 +226,26 @@ export default function DataConfirm(props) {
                     </Button>
                     <Button
                         className={classes.addButton}
-                        onClick={ () => userData.name == ''
-                        ? alert("Falta nombre")
-                        : !userData.email.includes("@")
-                            ? alert("Falta email")
+                        onClick={() => userData.save === 0
+                        ? handleOpenAlert("¿Cuánto ahorras al mes?", true)
+                        : userData.name === ''
+                            ? handleOpenAlert("Ingresa tu nombre", true)
                             : !state.checkedG
-                                ? alert("Confirma datos")
-                                : props.saveInfo()}
+                                ? handleOpenAlert("Confirma políticas de privacidad", true)
+                                : !userData.email.includes("@")
+                                    ? handleOpenAlert("Ingresa un correo electrónico válido", true)
+                                    : props.saveInfo()}
                         color="primary">
                         Generar diagnóstico
                     </Button>
                 </DialogActions>
             </Dialog>
             <Terms open={termsOpen} close={termsClose}/>
+            <Snackbar open={alertOpen} autoHideDuration={4000} onClose={handleCloseAlert}>
+                <Alert onClose={handleCloseAlert} severity="warning">
+                    {alert}
+                </Alert>
+            </Snackbar>
         </div>
     );
 }

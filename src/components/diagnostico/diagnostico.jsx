@@ -22,7 +22,7 @@ import ErrorDialog from './dialog/error';
 import DataConfirm from './dialog/data-confirm';
 import ProcessConfirm from './dialog/process-confirm';
 
-export default React.memo(function Nosotros() {
+export default React.memo(function Nosotros(props) {
     // const [formTitle,     setFormTitle] = useState(["Ingresos", "Gastos",
     // "Activos", "Deudas"]);
 
@@ -107,9 +107,11 @@ export default React.memo(function Nosotros() {
         setDivisa] = useState('COP');
     const changeDivisa = () => {
         if (state) {
-            setDivisa('USD')
+            setDivisa('USD');
+            props.divisa('USD')
         } else {
             setDivisa('COP')
+            props.divisa('COP')
         }
     }
     useEffect(() => {
@@ -272,6 +274,7 @@ export default React.memo(function Nosotros() {
             .ref('users/' + parseInt(usersQty + 1))
             .push(data)
             .then(function () {
+                props.data(data)
                 setProcessResult("success")
                 setTimeout(() => {
                     confirmClose(false)

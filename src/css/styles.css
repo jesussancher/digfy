@@ -360,6 +360,12 @@ html {
     justify-content: end;
     align-items: center;
 }
+
+/* Results section */
+.results__section{
+    display: flex;
+    
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .banner__img {
@@ -573,6 +579,9 @@ html {
     }
     .legend__btn__title {
         margin: 0;
+    }
+    .legend__side{
+        width: 45%;
     }
 }
 
