@@ -16,8 +16,9 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-// function Alert(props) {     return <MuiAlert elevation={6} variant="filled"
-// {...props}/>; }
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props}/>;
+}
 
 export default function DataConfirm(props) {
     const [open,
@@ -152,12 +153,13 @@ export default function DataConfirm(props) {
                     <div>
                         <img
                             style={{
-                            width: "30%"
+                            width: "35%"
                         }}
                             src={CroodWaving}
                             alt="error"/>
                     </div>
-                    {/* <DialogContentText>
+                    <DialogContent>
+                        <DialogContentText>
                             Pero antes de continuar
                         </DialogContentText>
                         <TextField
@@ -168,18 +170,20 @@ export default function DataConfirm(props) {
                             margin="dense"
                             id="save"
                             name="save"
-                            label="¿Cuál es tu porcentaje de ahorro al mes?"
+                            label="¿Cuánto ahorras al mes?"
                             type="number"
                             InputProps={{
                             endAdornment: <InputAdornment position="end">%</InputAdornment>
                         }}
-                            fullWidth/> */}
+                            fullWidth/>
+                    </DialogContent>
+                    <DialogTitle className={classes.dialog} id="alert-dialog-title">{"¡Hay que conocernos!"}</DialogTitle>
 
-                    <DialogContentText>
-                        ¡Queremos seguir en contacto contigo! Para nosotros es importante apoyarte a
-                        mejorar tus cuentas.
-                    </DialogContentText>
                     <DialogContent>
+                        <DialogContentText>
+                            ¡Queremos seguir en contacto contigo! Para nosotros es importante apoyarte a
+                            mejorar tus cuentas.
+                        </DialogContentText>
                         <TextField
                             required
                             autoFocus
@@ -238,11 +242,12 @@ export default function DataConfirm(props) {
                         Generar diagnóstico
                     </Button>
                 </DialogActions>
-                < Terms open={termsOpen} close={termsClose}/> {/* <Snackbar open={alertOpen} autoHideDuration={4000} onClose={handleCloseAlert}>
-                <Alert onClose={handleCloseAlert} severity="warning">
-                    {alert}
-                </Alert>
-            </Snackbar> */};
+                < Terms open={termsOpen} close={termsClose}/>
+                <Snackbar open={alertOpen} autoHideDuration={4000} onClose={handleCloseAlert}>
+                    <Alert onClose={handleCloseAlert} severity="warning">
+                        {alert}
+                    </Alert>
+                </Snackbar>
             </Dialog>
         </div>
     );

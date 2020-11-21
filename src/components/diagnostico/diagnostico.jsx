@@ -41,6 +41,7 @@ export default React.memo(function Nosotros(props) {
         name: '',
         email: '',
         confirmation: 'false',
+        save: '',
         ingresos: [],
         egresos: [],
         propiedades: [],

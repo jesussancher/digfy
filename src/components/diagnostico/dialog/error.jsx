@@ -69,6 +69,9 @@ export default function ErrorDialog(props) {
                 color: '#fff',
                 backgroundColor: '#69247f'
             }
+        },
+        overflow: {
+            overflow: 'hidden'
         }
     }));
 
@@ -78,6 +81,7 @@ export default function ErrorDialog(props) {
         <div>
             <Dialog
                 open={open}
+                className={classes.overflow}
                 TransitionComponent={Transition}
                 keepMounted
                 onClose={handleClose}

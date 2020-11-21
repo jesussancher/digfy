@@ -69,6 +69,7 @@ export default function Legends(props) {
         confirmation: true,
         name: 'Jesús',
         email: 'j@a.com',
+        save: '19',
         ingresos: [
             {
                 desc: '',
@@ -91,7 +92,7 @@ export default function Legends(props) {
             }, {
                 desc: '',
                 type: 'Hipotecario',
-                price: '300'
+                price: '30'
             }
         ],
         propiedades: [
@@ -167,6 +168,9 @@ export default function Legends(props) {
             case "consumo":
                 setHover("consumo");
                 break;
+            case "ahorro":
+                setHover("ahorro");
+                break;
         }
     }
     const deleteElevation = (e) => {
@@ -220,11 +224,20 @@ export default function Legends(props) {
             </TimelineItem>
             <TimelineItem>
                 <TimelineContent>
-                    <Paper elevation={3} className={classes.paper}>
-                        <Typography variant="h6" component="h1">
+                    <Paper
+                        title="ahorro"
+                        className={data.save <= 15
+                        ? classes.yellowBg
+                        : classes.greenBg}
+                        onMouseEnter={getElevation}
+                        onMouseLeave={deleteElevation}
+                        elevation={hover === "ahorro"
+                        ? 6
+                        : 0}>
+                        <Typography className={classes.whiteColor} variant="h6" component="h1">
                             Capacidad de ahorro
                         </Typography>
-                        <Typography></Typography>
+                        <Typography className={classes.whiteColor}>{data.save}%</Typography>
                     </Paper>
                 </TimelineContent>
             </TimelineItem>
