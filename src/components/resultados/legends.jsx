@@ -65,48 +65,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Legends(props) {
-    const data = {
-        confirmation: true,
-        name: 'Jesús',
-        email: 'j@a.com',
-        save: '19',
-        ingresos: [
-            {
-                desc: '',
-                type: 'Salario',
-                price: '1000'
-            }
-        ],
-        egresos: [
-            {
-                desc: '',
-                type: 'Financieros',
-                price: '100'
-            }
-        ],
-        deudas: [
-            {
-                desc: '',
-                type: 'Diario',
-                price: '61'
-            }, {
-                desc: '',
-                type: 'Hipotecario',
-                price: '30'
-            }
-        ],
-        propiedades: [
-            {
-                desc: '',
-                type: 'Vehiculo',
-                price: '12012000'
-            }
-        ]
-    }
+    // const data = {     confirmation: true,     name: 'Jesús',     email:
+    // 'j@a.com',     save: '19',     ingresos: [         {             desc: '',
+    //          type: 'Salario',             price: '1000'         }     ],
+    // egresos: [         {             desc: '',             type: 'Financieros',
+    //           price: '100'         }     ],     deudas: [         {
+    // desc: '',             type: 'Diario',             price: '61'         }, {
+    //          desc: '',             type: 'Hipotecario',             price: '30'
+    //       }     ],     propiedades: [         {             desc: '',
+    // type: 'Vehiculo',             price: '12012000'         }     ] }
     const [hover,
         setHover] = React.useState("");
 
-    // const {data} = props
+    const {data} = props
     const calcFlujo = () => {
         const ingresos = data.ingresos;
         const egresos = data.egresos;
