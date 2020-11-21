@@ -10,6 +10,7 @@ body {
     background-color: var(--complementary-bg);
 }
 html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 /* Header */
@@ -362,9 +363,9 @@ html {
 }
 
 /* Results section */
-.results__section{
+.results__section {
     display: flex;
-    
+
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -400,7 +401,7 @@ html {
         display: flex;
         justify-content: center;
     }
-    .type__card__container{
+    .type__card__container {
         flex-direction: column;
     }
     .legend__btn {
@@ -413,7 +414,7 @@ html {
     .legend__btn__title {
         margin: 0;
     }
-    .legend__title{
+    .legend__title {
         margin-top: 40px;
     }
     .legend__container {
@@ -426,14 +427,15 @@ html {
         align-items: center;
         width: 100%;
     }
-    .form__container{
+    .form__container {
         height: 53vh;
         width: 100%;
     }
-    .form__ingresos, .type__card__container{
+    .form__ingresos,
+    .type__card__container {
         height: 35vh;
     }
-    
+
     .type__card {
         border-radius: 10px;
         margin-top: 20px;
@@ -443,6 +445,11 @@ html {
         justify-content: center;
         align-items: center;
     }
+
+    /* .MuiDialog-root{
+        max-width: 50%;
+        flex-grow: 1;
+    } */
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -487,7 +494,7 @@ html {
     .legend__btn__title {
         margin: 0;
     }
-    .legend__title{
+    .legend__title {
         margin-top: 40px;
     }
     .legend__container {
@@ -500,7 +507,7 @@ html {
         align-items: center;
         width: 100%;
     }
-    .form__container{
+    .form__container {
         width: 100%;
     }
     .type__card {
@@ -580,7 +587,7 @@ html {
     .legend__btn__title {
         margin: 0;
     }
-    .legend__side{
+    .legend__side {
         width: 45%;
     }
 }

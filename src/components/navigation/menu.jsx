@@ -16,7 +16,7 @@ export default function Menu(props) {
             .getElementById("diagnostico")
             .offsetHeight + nosotros;
         const ayuda = document
-            .getElementById("ayuda")
+            .getElementById("resultados")
             .offsetHeight + diagnostico;
         setNavOffset({
             inicio: inicio - 1,
@@ -61,7 +61,7 @@ export default function Menu(props) {
                                 ={window.scrollY >= navOffset.asesorias - 1 && window.scrollY < navOffset.ayuda
                                 ? "active__link"
                                 : ""}
-                                href="#ayuda">Ayuda</a>
+                                href="#resultados">Ayuda</a>
                         </li>
                     </ul>
                 </nav>

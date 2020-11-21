@@ -16,9 +16,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props}/>;
-}
+// function Alert(props) {     return <MuiAlert elevation={6} variant="filled"
+// {...props}/>; }
 
 export default function DataConfirm(props) {
     const [open,
@@ -143,23 +142,22 @@ export default function DataConfirm(props) {
         <div>
             <Dialog
                 className={classes.dialog}
-                open={true}
+                open={open}
+                scroll={'body'}
                 onClose={handleClose}
-                aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">¡Estamos listos!</DialogTitle>
-
-                <DialogContent className={classes.content}>
+                maxWidth={'sm'}
+                alt="confirm">
+                <DialogTitle className={classes.dialog} id="alert-dialog-title">{"¡Estamos listos!"}</DialogTitle>
+                <DialogContent className={classes.dialog}>
                     <div>
                         <img
                             style={{
-                            width: '50%'
+                            width: "30%"
                         }}
                             src={CroodWaving}
-                            alt="confirm"/>
+                            alt="error"/>
                     </div>
-
-                    <DialogContent className={classes.textContent}>
-                        <DialogContentText>
+                    {/* <DialogContentText>
                             Pero antes de continuar
                         </DialogContentText>
                         <TextField
@@ -175,12 +173,13 @@ export default function DataConfirm(props) {
                             InputProps={{
                             endAdornment: <InputAdornment position="end">%</InputAdornment>
                         }}
-                            fullWidth/>
+                            fullWidth/> */}
 
-                        <DialogContentText>
-                            ¡Queremos seguir en contacto contigo! Para nosotros es importante apoyarte a
-                            mejorar tus cuentas.
-                        </DialogContentText>
+                    <DialogContentText>
+                        ¡Queremos seguir en contacto contigo! Para nosotros es importante apoyarte a
+                        mejorar tus cuentas.
+                    </DialogContentText>
+                    <DialogContent>
                         <TextField
                             required
                             autoFocus
@@ -239,13 +238,12 @@ export default function DataConfirm(props) {
                         Generar diagnóstico
                     </Button>
                 </DialogActions>
-            </Dialog>
-            <Terms open={termsOpen} close={termsClose}/>
-            <Snackbar open={alertOpen} autoHideDuration={4000} onClose={handleCloseAlert}>
+                < Terms open={termsOpen} close={termsClose}/> {/* <Snackbar open={alertOpen} autoHideDuration={4000} onClose={handleCloseAlert}>
                 <Alert onClose={handleCloseAlert} severity="warning">
                     {alert}
                 </Alert>
-            </Snackbar>
+            </Snackbar> */};
+            </Dialog>
         </div>
     );
 }

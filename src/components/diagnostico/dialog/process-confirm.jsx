@@ -18,10 +18,6 @@ export default function ProcessConfirm(props) {
     const [open,
         setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
     React.useEffect(() => {
         setOpen(props.open)
     }, [props.open]);

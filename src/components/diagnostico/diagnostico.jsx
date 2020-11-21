@@ -614,18 +614,18 @@ export default React.memo(function Nosotros(props) {
                                     </div>
                                 )}
                         </div>
+                        <ErrorDialog data={inputVerify} open={errorOpen} close={errorClose}/>
+                        <ProcessConfirm result={processResult} open={processOpen} close={processClose}/>
+                        <DataConfirm
+                            data={inputVerify}
+                            open={confirmOpen}
+                            close={confirmClose}
+                            saveInfo={saveContactForm}
+                            getUserData={saveUserData}
+                            confirmation={confirmation}/>
                     </div>
                 </div>
             </div>
-            <ErrorDialog data={inputVerify} open={errorOpen} close={errorClose}/>
-            <ProcessConfirm result={processResult} open={processOpen} close={processClose}/>
-            <DataConfirm
-                data={inputVerify}
-                open={confirmOpen}
-                close={confirmClose}
-                saveInfo={saveContactForm}
-                getUserData={saveUserData}
-                confirmation={confirmation}/>
         </div>
     )
 })

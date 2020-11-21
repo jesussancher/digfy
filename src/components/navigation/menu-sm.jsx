@@ -24,7 +24,7 @@ export default function MenuSM(props) {
                                 <a href="#nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="#ayuda">Ayuda</a>
+                                <a href="#resultados">Ayuda</a>
                             </li>
                         </ul>
                     </nav>
