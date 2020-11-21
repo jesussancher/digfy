@@ -67,60 +67,70 @@ const useStyles = makeStyles((theme) => ({
 export default function Legends(props) {
     // const data = {     confirmation: true,     name: 'Jesús',     email:
     // 'j@a.com',     save: '19',     ingresos: [         {             desc: '',
-    //          type: 'Salario',             price: '1000'         }     ],
-    // egresos: [         {             desc: '',             type: 'Financieros',
-    //           price: '100'         }     ],     deudas: [         {
-    // desc: '',             type: 'Diario',             price: '61'         }, {
-    //          desc: '',             type: 'Hipotecario',             price: '30'
-    //       }     ],     propiedades: [         {             desc: '',
-    // type: 'Vehiculo',             price: '12012000'         }     ] }
+    // type: 'Salario',             price: '1000'         }     ], egresos: [    {
+    // desc: '',             type: 'Financieros', price: '100'    }     ], deudas: [
+    //         { desc: '', type: 'Diario', price: '61'         }, {  desc: '', type:
+    // 'Hipotecario',      price: '30'       }     ], propiedades: [ {     desc: '',
+    // type: 'Vehiculo', price: '12012000' }     ] }
     const [hover,
         setHover] = React.useState("");
+    const [data,
+        setData] = React.useState({});
+    React.useEffect(() => {
+        setData(props.data)
+    }, [props.data])
 
-    const {data} = props
     const calcFlujo = () => {
-        const ingresos = data.ingresos;
-        const egresos = data.egresos;
         let totalIngresos = 0;
         let totalEgresos = 0;
-        for (let i = 0; i < ingresos.length; i++) {
-            totalIngresos += parseInt(ingresos[i].price);
+        if (data.ingresos && data.egresos != undefined) {
+            const ingresos = data.ingresos;
+            const egresos = data.egresos;
+            for (let i = 0; i < ingresos.length; i++) {
+                totalIngresos += parseInt(ingresos[i].price);
+            }
+            for (let u = 0; u < egresos.length; u++) {
+                totalEgresos += parseInt(egresos[u].price);
+            }
         }
-        for (let u = 0; u < egresos.length; u++) {
-            totalEgresos += parseInt(egresos[u].price);
-        }
+
         const flujoEfectivo = totalIngresos - totalEgresos
         return flujoEfectivo
     }
 
     const calcNivel = () => {
-        const ingresos = data.ingresos;
-        const deudas = data.deudas;
+
         let totalIngresos = 0;
         let totalDeudas = 0;
-        for (let i = 0; i < ingresos.length; i++) {
-            totalIngresos += parseInt(ingresos[i].price);
-        }
-        for (let u = 0; u < deudas.length; u++) {
-            totalDeudas += parseInt(deudas[u].price);
+        if (data.ingresos && data.deudas != undefined) {
+            const ingresos = data.ingresos;
+            const deudas = data.deudas;
+            for (let i = 0; i < ingresos.length; i++) {
+                totalIngresos += parseInt(ingresos[i].price);
+            }
+            for (let u = 0; u < deudas.length; u++) {
+                totalDeudas += parseInt(deudas[u].price);
+            }
         }
         const nivelEndeudamiento = totalDeudas / totalIngresos
         return (nivelEndeudamiento * 100).toFixed(2)
     }
 
     const calcConsumo = () => {
-        const deudas = data.deudas;
-        const ingresos = data.ingresos;
         let totalIngresos = 0;
         let totalDeudas = 0;
-        for (let i = 0; i < ingresos.length; i++) {
-            totalIngresos += parseInt(ingresos[i].price);
-        }
-        for (let u = 0; u < deudas.length; u++) {
-            if (deudas[u].type === "Libre") {
-                totalDeudas += parseInt(deudas[u].price);
-            } else if (deudas[u].type === "Diario") {
-                totalDeudas += parseInt(deudas[u].price);
+        if (data.ingresos && data.deudas != undefined) {
+            const deudas = data.deudas;
+            const ingresos = data.ingresos;
+            for (let i = 0; i < ingresos.length; i++) {
+                totalIngresos += parseInt(ingresos[i].price);
+            }
+            for (let u = 0; u < deudas.length; u++) {
+                if (deudas[u].type === "Libre") {
+                    totalDeudas += parseInt(deudas[u].price);
+                } else if (deudas[u].type === "Diario") {
+                    totalDeudas += parseInt(deudas[u].price);
+                }
             }
         }
         const deudasConsumo = totalDeudas / totalIngresos
