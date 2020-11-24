@@ -541,10 +541,47 @@ html {
     .banner__img {
         width: 55%;
         height: 100%;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .banner__img img {
-        margin-top: 36vh;
+        z-index: 150;
+        cursor: pointer;
+        position: relative;
+        width: 120px;
+        transition: all 300ms ease-in-out;
+    }
+    .videoContainer {
+        position: fixed;
+        background-color: rgba(0,0,0,0.8);
+        width: 100%;
+        height: 100%;
+        top: 5vh;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+    .close__video {
+        cursor: pointer;
+        color: var(--secondary-blue);
+        font-size: 25px;
+        position: absolute;
+        top: 8vh;
+        right: 3%;
+        transition: all 300ms ease-in-out;
+    }
+    .close__video:hover {
+        font-size: 27px;
+    }
+    .banner__img img:hover {
+        width: 140px;
+        height: 140px;
     }
 }
 

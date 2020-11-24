@@ -51,9 +51,9 @@ function MyApp(props) {
     const [open,
         setOpen] = React.useState(false);
     const [type,
-        setType] = React.useState('');
+        setType] = React.useState('¿Qué?');
     const [price,
-        setPrice] = React.useState('');
+        setPrice] = React.useState('¿Cuánto?');
 
     const handleChange = (event) => {
         setType(event.target.value || '');
@@ -68,6 +68,8 @@ function MyApp(props) {
 
     const handleClose = () => {
         setOpen(false);
+        setType('¿Qué?');
+        setPrice('¿Cuánto?')
     };
 
     const handleClickVariant = (variant) => {
@@ -88,9 +90,9 @@ function MyApp(props) {
     }
     return (
         <React.Fragment>
-            <Button className={classes.addButton} onClick={handleClickOpen}>Agregar propiedades</Button>
+            <Button className={classes.addButton} onClick={handleClickOpen}>Agregar bienes</Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Propiedades</DialogTitle>
+                <DialogTitle>Bienes</DialogTitle>
                 <DialogContent>
                     <form className={classes.container}>
                         <FormControl required className={classes.formControl}>

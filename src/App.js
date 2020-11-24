@@ -17,6 +17,7 @@ function App() {
     const getData = (e) => {
         setData(e)
     }
+
     return (
         <div>
             <section id="inicio">
@@ -28,11 +29,14 @@ function App() {
             <section id="nosotros"><Nosotros/></section>
             <section id="diagnostico"><Diagnostico data={getData} divisa={getDivisa}/></section>
             <section id="resultados">
-                <Results data={data} divisa={divisa}/>
+                {data.ingresos === undefined
+                    ? <h1>Aguantala</h1>
+                    : <Results data={data} divisa={divisa}/>}
             </section>
 
         </div>
     );
+
 }
 
 export default App;

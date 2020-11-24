@@ -67,6 +67,8 @@ function MyApp(props) {
     };
 
     const handleClose = () => {
+        setType('¿Qué?');
+        setPrice('¿Cuánto?');
         setOpen(false);
     };
 

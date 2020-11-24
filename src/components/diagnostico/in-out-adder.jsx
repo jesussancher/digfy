@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     inputField: {
         marginTop: '20px'
     },
-    hidden:{
+    hidden: {
         display: 'none'
     },
     addButton: {
@@ -68,6 +68,8 @@ function MyApp(props) {
 
     const handleClose = () => {
         setOpen(false);
+        setType('¿Qué?');
+        setPrice('¿Cuánto?')
     };
 
     const handleClickVariant = (variant) => {
@@ -83,7 +85,7 @@ function MyApp(props) {
             handleClickVariant('success')
         }
         setTimeout(() => {
-            handleClose()
+            handleClose();
         }, [1000])
     }
     return (
@@ -123,7 +125,8 @@ function MyApp(props) {
                                         label="¿Cuánto fue?"
                                         variant="outlined"/>
                                     <TextField
-                                        className={classes.inputField, classes.hidden}
+                                        className={classes.inputField,
+                                    classes.hidden}
                                         id="descIngreso"
                                         type="text"
                                         label="Descríbelo"
@@ -168,7 +171,8 @@ function MyApp(props) {
                                             label="¿Cuánto fue?"
                                             variant="outlined"/>
                                         <TextField
-                                            className={classes.inputField, classes.hidden}
+                                            className={classes.inputField,
+                                        classes.hidden}
                                             id="descEgreso"
                                             type="text"
                                             label="Descríbelo"
