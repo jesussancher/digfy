@@ -366,7 +366,11 @@ html {
 /* Results section */
 .results__section {
     display: flex;
-
+}
+.graph__side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

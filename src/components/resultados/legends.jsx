@@ -65,13 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Legends(props) {
-    // const data = {     confirmation: true,     name: 'Jesús',     email:
-    // 'j@a.com',     save: '19',     ingresos: [         {             desc: '',
-    // type: 'Salario',             price: '1000'         }     ], egresos: [    {
-    // desc: '',             type: 'Financieros', price: '100'    }     ], deudas: [
-    //         { desc: '', type: 'Diario', price: '61'         }, {  desc: '', type:
-    // 'Hipotecario',      price: '30'       }     ], propiedades: [ {     desc: '',
-    // type: 'Vehiculo', price: '12012000' }     ] }
+    
     const [hover,
         setHover] = React.useState("");
     const [data,
@@ -157,6 +151,7 @@ export default function Legends(props) {
     const deleteElevation = (e) => {
         setHover("")
     }
+
     return (
         <Timeline className={classes.container} align="right">
             <TimelineItem>
@@ -170,6 +165,7 @@ export default function Legends(props) {
                             : classes.pinkBg}
                         onMouseEnter={getElevation}
                         onMouseLeave={deleteElevation}
+                        onClick={() => props.getGraph("flujo")}
                         elevation={hover === "flujo"
                         ? 6
                         : 0}>
@@ -193,6 +189,7 @@ export default function Legends(props) {
                                 : classes.redBg}
                         onMouseEnter={getElevation}
                         onMouseLeave={deleteElevation}
+                        onClick={() => props.getGraph("nivel")}
                         elevation={hover === "nivel"
                         ? 6
                         : 0}>
@@ -212,6 +209,7 @@ export default function Legends(props) {
                         : classes.greenBg}
                         onMouseEnter={getElevation}
                         onMouseLeave={deleteElevation}
+                        onClick={() => props.getGraph("ahorro")}
                         elevation={hover === "ahorro"
                         ? 6
                         : 0}>
@@ -231,6 +229,7 @@ export default function Legends(props) {
                         : classes.orangeBg}
                         onMouseEnter={getElevation}
                         onMouseLeave={deleteElevation}
+                        onClick={() => props.getGraph("consumo")}
                         elevation={hover === "consumo"
                         ? 6
                         : 0}>
