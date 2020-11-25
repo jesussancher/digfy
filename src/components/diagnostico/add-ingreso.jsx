@@ -144,17 +144,17 @@ export default function AddIngreso(props) {
             switch (ingresos[i].type) {
                 case "Honorario":
                     honoCount++;
-                    honoPrice += parseInt(ingresos[i].price);
+                    honoPrice = parseInt(ingresos[i].price);
                     totalHonorario.push({desc: ingresos[i].desc, price: ingresos[i].price});
                     break;
                 case "Salario":
                     salaCount++;
-                    salaPrice += parseInt(ingresos[i].price);
+                    salaPrice = parseInt(ingresos[i].price);
                     totalSalario.push({desc: ingresos[i].desc, price: ingresos[i].price});
                     break;
                 case "Efectivo":
                     efeCount++;
-                    efePrice += parseInt(ingresos[i].price);
+                    efePrice = parseInt(ingresos[i].price);
                     totalEfectivo.push({desc: ingresos[i].desc, price: ingresos[i].price});
                     break;
             }
@@ -214,17 +214,17 @@ export default function AddIngreso(props) {
             switch (egresos[i].type) {
                 case "Vitales":
                     vitaCount++;
-                    vitaPrice += parseInt(egresos[i].price);
+                    vitaPrice = parseInt(egresos[i].price);
                     totalVitales.push({desc: egresos[i].desc, price: egresos[i].price});
                     break;
                 case "Financieros":
                     finanCount++;
-                    finanPrice += parseInt(egresos[i].price);
+                    finanPrice = parseInt(egresos[i].price);
                     totalFinancieros.push({desc: egresos[i].desc, price: egresos[i].price});
                     break;
                 case "Hormiga":
                     hormiCount++;
-                    hormiPrice += parseInt(egresos[i].price);
+                    hormiPrice = parseInt(egresos[i].price);
                     totalHormiga.push({desc: egresos[i].desc, price: egresos[i].price});
                     break;
             }
@@ -284,17 +284,17 @@ export default function AddIngreso(props) {
             switch (deudas[i].type) {
                 case "Hipotecario":
                     hipoCount++;
-                    hipoPrice += parseInt(deudas[i].price);
+                    hipoPrice = parseInt(deudas[i].price);
                     totalHipotecario.push({desc: deudas[i].desc, price: deudas[i].price});
                     break;
                 case "Libre":
                     libreCount++;
-                    librePrice += parseInt(deudas[i].price);
+                    librePrice = parseInt(deudas[i].price);
                     totalLibre.push({desc: deudas[i].desc, price: deudas[i].price});
                     break;
                 case "Diario":
                     diarioCount++;
-                    diarioPrice += parseInt(deudas[i].price);
+                    diarioPrice = parseInt(deudas[i].price);
                     totalDiario.push({desc: deudas[i].desc, price: deudas[i].price});
                     break;
             }
@@ -354,17 +354,17 @@ export default function AddIngreso(props) {
             switch (propiedades[i].type) {
                 case "Inmueble":
                     inmuCount++;
-                    inmuPrice += parseInt(propiedades[i].price);
+                    inmuPrice = parseInt(propiedades[i].price);
                     totalInmueble.push({desc: propiedades[i].desc, price: propiedades[i].price});
                     break;
                 case "Vehiculo":
                     vehiCount++;
-                    vehiPrice += parseInt(propiedades[i].price);
+                    vehiPrice = parseInt(propiedades[i].price);
                     totalVehiculo.push({desc: propiedades[i].desc, price: propiedades[i].price});
                     break;
                 case "Otro":
                     otroCount++;
-                    otroPrice += parseInt(propiedades[i].price);
+                    otroPrice = parseInt(propiedades[i].price);
                     totalOtro.push({desc: propiedades[i].desc, price: propiedades[i].price});
                     break;
             }
@@ -537,10 +537,14 @@ export default function AddIngreso(props) {
                             {perTypeDeudas.libre.total > 0
                                 ? <div className="type__card card__active text-center">Libre inversión
                                         <br></br>
+                                        Tarjeta de crédito
+                                        <br></br>
                                         ${perTypeDeudas.libre.total}
                                         <br/> {props.divisa}
                                     </div>
                                 : <div className="type__card card__inactive">Libre inversión
+                                    <br></br>
+                                    Tarjeta de crédito
                                 </div>
 }
                             {perTypeDeudas.diario.total > 0

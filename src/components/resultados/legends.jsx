@@ -2,15 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import HotelIcon from '@material-ui/icons/Hotel';
-import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
@@ -65,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Legends(props) {
-    
+
     const [hover,
         setHover] = React.useState("");
     const [data,
@@ -132,24 +124,8 @@ export default function Legends(props) {
     }
     const classes = useStyles();
 
-    const getElevation = (e) => {
-        switch (e.target.title) {
-            case "flujo":
-                setHover("flujo");
-                break;
-            case "nivel":
-                setHover("nivel");
-                break;
-            case "consumo":
-                setHover("consumo");
-                break;
-            case "ahorro":
-                setHover("ahorro");
-                break;
-        }
-    }
-    const deleteElevation = (e) => {
-        setHover("")
+    const getGraph = (e) => {
+        props.getGraph(e)
     }
 
     return (
@@ -163,12 +139,7 @@ export default function Legends(props) {
                         : calcFlujo() === 0
                             ? classes.yellowBg
                             : classes.pinkBg}
-                        onMouseEnter={getElevation}
-                        onMouseLeave={deleteElevation}
-                        onClick={() => props.getGraph("flujo")}
-                        elevation={hover === "flujo"
-                        ? 6
-                        : 0}>
+                        onClick={() => getGraph("flujo")}>
                         <Typography variant="h6" component="h1" className={classes.whiteColor}>
                             Flujo de Efectivo
                         </Typography>
@@ -187,12 +158,7 @@ export default function Legends(props) {
                             : calcNivel() <= 60
                                 ? classes.pinkBg
                                 : classes.redBg}
-                        onMouseEnter={getElevation}
-                        onMouseLeave={deleteElevation}
-                        onClick={() => props.getGraph("nivel")}
-                        elevation={hover === "nivel"
-                        ? 6
-                        : 0}>
+                        onClick={() => getGraph("nivel")}>
                         <Typography className={classes.whiteColor} variant="h6" component="h1">
                             Nivel de Endeudamiento
                         </Typography>
@@ -207,12 +173,7 @@ export default function Legends(props) {
                         className={data.save <= 15
                         ? classes.yellowBg
                         : classes.greenBg}
-                        onMouseEnter={getElevation}
-                        onMouseLeave={deleteElevation}
-                        onClick={() => props.getGraph("ahorro")}
-                        elevation={hover === "ahorro"
-                        ? 6
-                        : 0}>
+                        onClick={() => getGraph("ahorro")}>
                         <Typography className={classes.whiteColor} variant="h6" component="h1">
                             Capacidad de ahorro
                         </Typography>
@@ -227,12 +188,7 @@ export default function Legends(props) {
                         className={calcConsumo() <= 15
                         ? classes.greenBg
                         : classes.orangeBg}
-                        onMouseEnter={getElevation}
-                        onMouseLeave={deleteElevation}
-                        onClick={() => props.getGraph("consumo")}
-                        elevation={hover === "consumo"
-                        ? 6
-                        : 0}>
+                        onClick={() => getGraph("consumo")}>
                         <Typography className={classes.whiteColor} variant="h6" component="h1">
                             Deudas de consumo
                         </Typography>

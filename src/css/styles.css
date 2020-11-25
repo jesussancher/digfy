@@ -367,8 +367,9 @@ html {
 .results__section {
     display: flex;
 }
-.graph__side{
+.graph__side div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -630,6 +631,9 @@ html {
         margin: 0;
     }
     .legend__side {
+        width: 45%;
+    }
+    .graph__side {
         width: 45%;
     }
 }

@@ -103,7 +103,7 @@ function MyApp(props) {
                                 onChange={handleChange}
                                 input={< Input />}>
                                 <MenuItem value={"Hipotecario"}>Hipotecario</MenuItem>
-                                <MenuItem value={"Libre"}>Libre Inversión</MenuItem>
+                                <MenuItem value={"Libre"}>Libre Inversión y Tarjeta de crédito</MenuItem>
                                 <MenuItem value={"Diario"}>De pago diario</MenuItem>
                             </Select>
                             <TextField

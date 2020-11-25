@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import Legends from './legends';
-import Graphics from './graphics';
-import {GetApp} from '@material-ui/icons';
+import GraphicsFlujo from './graphics/graphics-flujo';
+import GraphicsNivel from './graphics/graphics-nivel';
 
 export default function Results(props) {
 
     const [graph,
-        setGraph] = useState("flujo");
+        setGraph] = useState("");
 
     const getGraph = (e) => {
         setGraph(e)
@@ -28,7 +28,7 @@ export default function Results(props) {
                     <Legends data={props.data} divisa={props.divisa} getGraph={getGraph}/>
                 </div>
                 <div className="graph__side">
-                    <Graphics graph={graph}/>
+                    <GraphicsFlujo data={props.data} graph={graph}/>
                 </div>
             </div>
         </div>
