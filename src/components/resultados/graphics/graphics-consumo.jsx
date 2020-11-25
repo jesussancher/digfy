@@ -20,32 +20,38 @@ export default function GraphicsNivel(props) {
         return [totalIngresos, totalAhorros]
     }
 
-    const calcNivel = () => {
+    const calcConsumo = () => {
         let totalIngresos = 0;
         let totalDeudas = 0;
         if (data.ingresos && data.deudas != undefined) {
-            const ingresos = data.ingresos;
             const deudas = data.deudas;
+            const ingresos = data.ingresos;
             for (let i = 0; i < ingresos.length; i++) {
                 totalIngresos += parseInt(ingresos[i].price);
             }
             for (let u = 0; u < deudas.length; u++) {
-                totalDeudas += parseInt(deudas[u].price);
+                if (deudas[u].type === "Libre") {
+                    totalDeudas += parseInt(deudas[u].price);
+                } else if (deudas[u].type === "Diario") {
+                    totalDeudas += parseInt(deudas[u].price);
+                }
             }
         }
-        const nivelEndeudamiento = totalDeudas / totalIngresos;
-        return (nivelEndeudamiento * 100).toFixed(2)
+        const deudasConsumo = totalDeudas / totalIngresos
+        return (deudasConsumo * 100).toFixed(2)
     }
+
+
     useEffect(() => {
-        newChartNivel()
+        newChartConsumo()
     }, [graph])
-    const newChartNivel = () => {
-        new Chart($('#myChartNivel'), {
+    const newChartConsumo = () => {
+        new Chart($('#myChartConsumo'), {
             type: 'doughnut',
             data: {
                 labels: [
                     'Ingresos: $' + getIngAh()[0] +' (100%)',
-                    'Deudas: $' + (getIngAh()[0] * calcNivel() / 100) + ' ('+calcNivel() + '%)'
+                    'Deudas: $' + (getIngAh()[0] * calcConsumo() / 100) + ' ('+calcConsumo() + '%)'
                 ],
                 datasets: [
                     {
@@ -55,7 +61,7 @@ export default function GraphicsNivel(props) {
                         ],
                         data: [
                             getIngAh()[0],
-                            calcNivel() * getIngAh()[0] / 100
+                            calcConsumo() * getIngAh()[0] / 100
                         ]
                     }
                 ]
@@ -74,8 +80,8 @@ export default function GraphicsNivel(props) {
 
     return (
         <div>
-            <h1 className="purple">Nivel de Endeudamiento</h1>
-            <canvas id="myChartNivel" width="350" height="350"></canvas>
+            <h1 className="purple">Deudas de consumo</h1>
+            <canvas id="myChartConsumo" width="350" height="350"></canvas>
         </ div>
     );
 }

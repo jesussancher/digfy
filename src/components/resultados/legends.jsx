@@ -24,27 +24,28 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#69247f'
     },
     greenBg: {
-        backgroundColor: ' #1cd587',
+        // backgroundColor: ' #1cd587',
+        backgroundColor: ' #1cd5c4',
         padding: '6px 16px',
         cursor: 'pointer'
     },
     pinkBg: {
         backgroundColor: 'salmon',
-        padding: '6px 16px',
+        padding: '6px 0px',
         cursor: 'pointer'
     },
     redBg: {
-        backgroundColor: ' #C70039 ',
+        backgroundColor: ' #c01a70 ',
         padding: '6px 16px',
         cursor: 'pointer'
     },
     yellowBg: {
-        backgroundColor: '#FFC300',
+        backgroundColor: '#e7e23a',
         padding: '6px 16px',
         cursor: 'pointer'
     },
     orangeBg: {
-        backgroundColor: ' #FF5733',
+        backgroundColor: ' #e7963a',
         padding: '6px 16px',
         cursor: 'pointer'
     },

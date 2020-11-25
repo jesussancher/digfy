@@ -256,7 +256,6 @@ html {
 .section__content__container {
     padding-top: 40px;
     display: flex;
-    flex-wrap: wrap;
 }
 .nosotros__card {
     text-align: center;
@@ -364,9 +363,9 @@ html {
 }
 
 /* Results section */
-.results__section {
+/* .results__section {
     display: flex;
-}
+} */
 .graph__side div {
     display: flex;
     flex-direction: column;
@@ -452,10 +451,10 @@ html {
         align-items: center;
     }
 
-    /* .MuiDialog-root{
-        max-width: 50%;
-        flex-grow: 1;
-    } */
+    .graph__side{
+        width: 100%;
+    }
+    
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

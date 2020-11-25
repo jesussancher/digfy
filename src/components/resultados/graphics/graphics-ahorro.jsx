@@ -2,38 +2,35 @@ import React, {useState, useCallback, useEffect} from 'react';
 import Chart from 'chart.js';
 import $ from 'jquery';
 
-
-export default function GraphicsFlujo(props) {
+export default function GraphicsAhorro(props) {
     const {data} = props;
     let {graph} = props;
 
-    const getIngEg = () => {
+    const getIngAh = () => {
         let totalIngresos = 0;
-        let totalEgresos = 0;
-        if (data.ingresos && data.egresos != undefined) {
+        let totalAhorros = 0;
+        if (data.ingresos && data.save != undefined) {
             const ingresos = data.ingresos;
-            const egresos = data.egresos;
+            const ahorros = parseInt(data.save);
             for (let i = 0; i < ingresos.length; i++) {
                 totalIngresos += parseInt(ingresos[i].price);
             }
-            for (let u = 0; u < egresos.length; u++) {
-                totalEgresos += parseInt(egresos[u].price);
-            }
+            totalAhorros = totalIngresos * ahorros / 100
         }
-        return [totalIngresos, totalEgresos]
+        return [totalIngresos, totalAhorros]
     }
 
     useEffect(() => {
-        newChartFlujo()
+        newChartAhorro()
     }, [graph])
 
-    const newChartFlujo = () => {
-        new Chart($('#myChartFlujo'), {
+    const newChartAhorro = () => {
+        new Chart($('#myChartAhorro'), {
             type: 'doughnut',
             data: {
                 labels: [
-                    'Ingresos: $' + getIngEg()[0] + ' (100%)',
-                    'Egresos: $' + getIngEg()[1] + ' (' + (getIngEg()[1]*100/getIngEg()[0]) + '%)'
+                    'Ingresos: $' + getIngAh()[0] + ' (100%)',
+                    'Ahorros: $' + getIngAh()[1] + ' (' + data.save + '%)'
                 ],
                 datasets: [
                     {
@@ -41,7 +38,7 @@ export default function GraphicsFlujo(props) {
                         backgroundColor: [
                             "#69247f", "#6bc1ce"
                         ],
-                        data: getIngEg()
+                        data: getIngAh()
                     }
                 ]
             },
@@ -58,8 +55,8 @@ export default function GraphicsFlujo(props) {
 
     return (
         <div>
-            <h1 className="purple">Flujo de efectivo</h1>
-            <canvas id="myChartFlujo" width="350" height="350">Holaaa</canvas>
+            <h1 className="purple">Capacidad de ahorro</h1>
+            <canvas id="myChartAhorro" width="350" height="350">Holaaa</canvas>
         </ div>
     )
 

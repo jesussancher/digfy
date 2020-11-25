@@ -29,8 +29,8 @@ function App() {
             <section id="nosotros"><Nosotros/></section>
             <section id="diagnostico"><Diagnostico data={getData} divisa={getDivisa}/></section>
             <section id="resultados">
-                {!data.ingresos === undefined
-                    ? <h1>Aguantala</h1>
+                {data.ingresos === undefined
+                    ? <div></div>
                     : <Results data={data} divisa={divisa}/>}
             </section>
 
