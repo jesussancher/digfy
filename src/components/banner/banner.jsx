@@ -34,9 +34,9 @@ export default function Banner() {
             <div className="banner__img">
                 {!open
                     ? <img src={bannerImg} onClick={() => openVideo()} alt="Banner"/>
-                    : <div class="videoContainer">
+                    : <div className="videoContainer">
                         <span onClick={() => openVideo()} className="close__video">
-                            <i class="fas fa-times-circle"></i>
+                            <i className="fas fa-times-circle"></i>
                         </span>
                         <iframe
                             id="video"

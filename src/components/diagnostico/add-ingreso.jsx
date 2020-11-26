@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import InOutAdder from './in-out-adder';
 import DeudaAdder from './deuda-adder';
 import PropiedadAdder from './propiedad-adder';
-
-import ListModal from './list-modal';
 // import firebase from "firebase/app";
 
 export default function AddIngreso(props) {
@@ -460,12 +458,6 @@ export default function AddIngreso(props) {
                 <div className="add__btn">
                     <InOutAdder newIngreso={newIngreso} inOut={"ingreso"}/>
                 </div>
-                <ListModal
-                    open={listOpen}
-                    close={closeList}
-                    data={data}
-                    category={listOpen[1]}
-                    update={() => updateData}/>
             </div>
         )
     }
@@ -509,12 +501,6 @@ export default function AddIngreso(props) {
                 <div className="add__btn">
                     <InOutAdder newIngreso={newEgreso} inOut={"egreso"}/>
                 </div>
-                <ListModal
-                    open={listOpen}
-                    close={closeList}
-                    data={data}
-                    category={listOpen[1]}
-                    update={() => updateData}/>
             </div>
         )
     }
@@ -562,12 +548,6 @@ export default function AddIngreso(props) {
                 <div className="add__btn">
                     <DeudaAdder newDeuda={newDeudas} inOut={"deuda"}/>
                 </div>
-                <ListModal
-                    open={listOpen}
-                    close={closeList}
-                    data={data}
-                    category={listOpen[1]}
-                    update={() => updateData}/>
             </div>
         )
     }
@@ -611,12 +591,6 @@ export default function AddIngreso(props) {
                 <div className="add__btn">
                     <PropiedadAdder newPropiedad={newPropiedades} inOut={"propiedad"}/>
                 </div>
-                <ListModal
-                    open={listOpen}
-                    close={closeList}
-                    data={data}
-                    category={listOpen[1]}
-                    update={() => updateData}/>
             </div>
         )
     }

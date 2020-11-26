@@ -4,8 +4,9 @@ import GraphicsFlujo from './graphics/graphics-flujo';
 import GraphicsNivel from './graphics/graphics-nivel';
 import GraphicsAhorro from './graphics/graphics-ahorro';
 import GraphicsConsumo from './graphics/graphics-consumo';
+import PDF from './pdf';
 
-export default function Results(props) {
+export default React.memo(function Results(props) {
 
     const [graph,
         setGraph] = useState("flujo");
@@ -13,6 +14,8 @@ export default function Results(props) {
     const getGraph = (e) => {
         setGraph(e)
     }
+
+    const {data} = props;
 
     return (
         <div
@@ -25,6 +28,16 @@ export default function Results(props) {
                 Según la información que diste, te contamos en cuatro aspectos cómo se
                 encuentran tus estados financieros.
             </p>
+
+            <div style={{
+                textAlign: "center"
+            }}><br></br>
+                {/* {data.ingresos !== undefined
+                    ? <PDF data={data}/>
+                    : <div></div>} */}
+                    <PDF data={data}/>
+            </div>
+
             <div className="section__content__container">
                 <div className="legend__side">
                     <Legends data={props.data} divisa={props.divisa} getGraph={getGraph}/>
@@ -42,4 +55,4 @@ export default function Results(props) {
             </div>
         </div>
     )
-}
+})

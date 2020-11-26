@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import InOutAdder from './in-out-adder';
-import ListModal from './list-modal';
 // import firebase from "firebase/app";
 
 export default function AddEgreso(props) {
@@ -188,12 +187,6 @@ export default function AddEgreso(props) {
             <div className="add__btn">
                 <InOutAdder newIngreso={newIngreso} inOut={"ingreso"}/>
             </div>
-            <ListModal
-                open={listOpen}
-                close={closeList}
-                data={data}
-                category={listOpen[1]}
-                update={() => updateData}/>
         </div>
     )
 }

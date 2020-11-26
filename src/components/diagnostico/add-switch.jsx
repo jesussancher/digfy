@@ -1,6 +1,5 @@
 import React from 'react';
 import AddIngreso from './add-ingreso';
-import AddEgreso from './add-egreso';
 
 export default function AddSwitch(props) {
             return (

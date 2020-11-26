@@ -4,6 +4,7 @@ import Banner from './components/banner/banner';
 import Nosotros from './components/fpp/nosotros';
 import Diagnostico from './components/diagnostico/diagnostico';
 import Results from './components/resultados/results';
+import Footer from './components/footer/footer';
 import {useState} from 'react';
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
                     ? <div></div>
                     : <Results data={data} divisa={divisa}/>}
             </section>
-
+            <section id="contacto"><Footer/></section>
         </div>
     );
 
