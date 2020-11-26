@@ -21,6 +21,7 @@ import 'firebase/database';
 import ErrorDialog from './dialog/error';
 import DataConfirm from './dialog/data-confirm';
 import ProcessConfirm from './dialog/process-confirm';
+import $ from 'jquery'
 
 export default React.memo(function Nosotros(props) {
     // const [formTitle,     setFormTitle] = useState(["Ingresos", "Gastos",
@@ -437,16 +438,66 @@ export default React.memo(function Nosotros(props) {
             : setErrorOpen(true);
     }
 
+    const [openVideo,
+        setOpenVideo] = useState(false)
+
+    const openVideoFn = () => {
+        setOpenVideo(!openVideo)
+    }
+
+    $(function () {
+        $('#video').css({
+            width: $(window).innerWidth() * 0.85 + 'px',
+            height: $(window).innerHeight() * 0.85 + 'px'
+        });
+
+        $(window).resize(function () {
+            $('#video').css({
+                width: $(window).innerWidth() * 0.85 + 'px',
+                height: $(window).innerHeight() * 0.85 + 'px'
+            });
+        });
+    });
     return (
         <div className="section__container">
-            {/* <button onClick={() => isReady()}>Prueba</button>
-            <button onClick={() => getContactForm()}>Prueba Get</button> */}
             <h3 className="montserrat__font text-center purple">Entiende tus finanzas</h3>
             <p className="section__description">
                 Saber cómo se encuentran tus finanzas y cómo mejorarlas es clave para que puedas
                 disfrutar de tus mayores deseos y puedas cumplir tus sueños. ¡Te ayudamos a
                 lograrlo!
             </p>
+            <div
+                style={{
+                    marginTop:'40px',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
+            }}>
+                <Button onClick={() => openVideoFn()} className={classes.addButton}>
+                    ¿Cómo usar Digfy?
+                </Button>
+            </div>
+
+            {openVideo
+                ? <div
+                        style={{
+                        top: '-0vh',
+                        height: '100vh'
+                    }}
+                        className="videoContainer">
+                        <span onClick={() => openVideoFn()} className="close__video">
+                            <i className="fas fa-times-circle"></i>
+                        </span>
+                        <iframe
+                            id="video"
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/L6WvD5P7rPQ?controls=0&autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                : <div></div>}
             <div className="section__content__container">
                 <div className="form__container">
                     <div className="divisa__switch">
