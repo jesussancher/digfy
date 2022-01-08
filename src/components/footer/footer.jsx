@@ -56,9 +56,9 @@ export default function Footer(props) {
                         justifyContent: 'space-around',
                         alignItems: 'center'
                     }}>
-                        <a href="https://www.facebook.com/finanzaspersonalespracticas/" target="_blank" alt="Facebook"><i className="fab fa-facebook-square"></i></a>
-                        <a href="https://www.instagram.com/finanzaspersonalespracticas/" target="_blank" alt="Instagram"><i className="fab fa-instagram-square"></i></a>
-                        <a href="https://www.youtube.com/channel/UCGjkxD1cyzfcEKn-0dy7FAQ?sub_confirmation=1" target="_blank" alt="Youtube"><i className="fab fa-youtube-square"></i></a>
+                        <a href="https://www.facebook.com/finanzaspersonalespracticas/" target="_blank" rel="noreferrer" alt="Facebook"><i className="fab fa-facebook-square"></i></a>
+                        <a href="https://www.instagram.com/finanzaspersonalespracticas/" target="_blank" rel="noreferrer" alt="Instagram"><i className="fab fa-instagram-square"></i></a>
+                        <a href="https://www.youtube.com/channel/UCGjkxD1cyzfcEKn-0dy7FAQ?sub_confirmation=1" target="_blank" rel="noreferrer" alt="Youtube"><i className="fab fa-youtube-square"></i></a>
 
                         
 
@@ -91,14 +91,14 @@ export default function Footer(props) {
                         fontSize: '12px',
                         color: 'white'
                     }}>
-                        Copyright © <a className="jesus" href="https://finanzaspersonalespracticas.com/" target="_blank" alt="FPP"> FINANZAS PERSONALES PRACTICAS</a>
+                        Copyright © <a className="jesus" href="https://finanzaspersonalespracticas.com/" target="_blank" rel="noreferrer" alt="FPP"> FINANZAS PERSONALES PRACTICAS</a>
                     </p>
                     <p
                         style={{
                         fontSize: '12px',
                         color: 'white'
                     }}>
-                        Design and development by <a className="jesus" href="https://twitter.com/Jesussancher" target="_blank" alt="designer">Jesús Sánchez</a>
+                        Design and development by <a className="jesus" href="https://twitter.com/Jesussancher" target="_blank" rel="noreferrer" alt="designer">Jesús Sánchez</a>
                     </p>
                 </div>
             </div>

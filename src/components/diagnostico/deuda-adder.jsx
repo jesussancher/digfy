@@ -5,14 +5,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import {SnackbarProvider, useSnackbar} from 'notistack';
-import Snackbar from '@material-ui/core/Snackbar';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -78,7 +76,7 @@ function MyApp(props) {
         //         break; }
     };
     const newDeuda = () => {
-        if (type != '' && price != 0) {
+        if (type !== '' && price !== 0) {
             props
                 .props
                 .newDeuda(type);
@@ -115,8 +113,8 @@ function MyApp(props) {
                                 label="¿Cuánto fue?"
                                 variant="outlined"/>
                             <TextField
-                                className={classes.inputField,
-                            classes.hidden}
+                                className={classes.inputField
+                           /*  classes.hidden */}
                                 id="descDeuda"
                                 type="text"
                                 label="Descríbelo"

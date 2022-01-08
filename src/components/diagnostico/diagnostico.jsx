@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import MainAdd from './main-add';
+// import MainAdd from './main-add';
 import AddSwitch from './add-switch';
 import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
@@ -52,9 +52,9 @@ export default React.memo(function Nosotros(props) {
         setState] = useState(false);
     const [mainAddStatus,
         setMainAddStatus] = useState(false);
-    const getMainAddStatus = (e) => {
-        setMainAddStatus(e)
-    }
+    // const getMainAddStatus = (e) => {
+    //     setMainAddStatus(e)
+    // }
 
     const getIngresos = (e) => {
         setIngresos(e);
@@ -143,9 +143,6 @@ export default React.memo(function Nosotros(props) {
             width: '75%',
             backgroundColor: 'rgba(0,0,0,0)'
         },
-        backButton: {
-            marginRight: theme.spacing()
-        },
         step: {
             backgroundColor: '#69247F'
         },
@@ -165,7 +162,8 @@ export default React.memo(function Nosotros(props) {
         },
         backButton: {
             color: '#69247f',
-            transition: 'all 300ms ease'
+            transition: 'all 300ms ease',
+            marginRight: theme.spacing()
         }
     }));
     const QontoConnector = withStyles({
@@ -333,7 +331,7 @@ export default React.memo(function Nosotros(props) {
     useEffect(() => {
         getContactForm()
         getData()
-        if (ingresos.length != 0) {
+        if (ingresos.length !== 0) {
             setIngColor('#6bc1ce')
             setInputVerify({
                 ...inputVerify,
@@ -345,7 +343,7 @@ export default React.memo(function Nosotros(props) {
     useEffect(() => {
         getContactForm()
         getData()
-        if (egresos.length != 0) {
+        if (egresos.length !== 0) {
             setEgColor('#6bc1ce')
             setInputVerify({
                 ...inputVerify,
@@ -357,7 +355,7 @@ export default React.memo(function Nosotros(props) {
     useEffect(() => {
         getContactForm()
         getData()
-        if (propiedades.length != 0) {
+        if (propiedades.length !== 0) {
             setProColor('#6bc1ce')
             setInputVerify({
                 ...inputVerify,
@@ -369,7 +367,7 @@ export default React.memo(function Nosotros(props) {
     useEffect(() => {
         getContactForm()
         getData()
-        if (deudas.length != 0) {
+        if (deudas.length !== 0) {
             setDeColor('#6bc1ce')
             setInputVerify({
                 ...inputVerify,
@@ -433,7 +431,7 @@ export default React.memo(function Nosotros(props) {
         }
         setReady(ready);
 
-        ready == 4
+        ready === 4
             ? setConfirmOpen(true)
             : setErrorOpen(true);
     }
@@ -492,6 +490,7 @@ export default React.memo(function Nosotros(props) {
                             id="video"
                             width="560"
                             height="315"
+                            title="Digfy Video"
                             src="https://www.youtube.com/embed/L6WvD5P7rPQ?controls=0&autoplay=1"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -655,7 +654,7 @@ export default React.memo(function Nosotros(props) {
                                             </Button>
                                             <Button
                                                 className={classes.addButton}
-                                                onClick={() => formChart != 3
+                                                onClick={() => formChart !== 3
                                                 ? handleNext()
                                                 : isReady()}>
                                                 {formChart === steps.length - 1

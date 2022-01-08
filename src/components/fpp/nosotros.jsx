@@ -22,7 +22,7 @@ export default function Nosotros() {
                 </div>
             </div>
             <div className="know__more__btn">
-                <a className="banner__btn btn montserrat__font" href="https://finanzaspersonalespracticas.com/" target="_blank">Conoce más</a>
+                <a className="banner__btn btn montserrat__font" href="https://finanzaspersonalespracticas.com/" rel="noreferrer" target="_blank">Conoce más</a>
             </div>
         </div>
     )

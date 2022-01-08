@@ -42,6 +42,7 @@ export default function Banner() {
                             id="video"
                             width="560"
                             height="315"
+                            title="Digfy Video"
                             src="https://www.youtube.com/embed/tH9pg9giExY?controls=0&autoplay=1"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

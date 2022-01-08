@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Chart from 'chart.js';
 import $ from 'jquery';
 
@@ -9,7 +9,7 @@ export default function GraphicsNivel(props) {
     const getIngAh = () => {
         let totalIngresos = 0;
         let totalAhorros = 0;
-        if (data.ingresos && data.save != undefined) {
+        if (data.ingresos && data.save !== undefined) {
             const ingresos = data.ingresos;
             const ahorros = parseInt(data.save);
             for (let i = 0; i < ingresos.length; i++) {
@@ -23,7 +23,7 @@ export default function GraphicsNivel(props) {
     const calcNivel = () => {
         let totalIngresos = 0;
         let totalDeudas = 0;
-        if (data.ingresos && data.deudas != undefined) {
+        if (data.ingresos && data.deudas !== undefined) {
             const ingresos = data.ingresos;
             const deudas = data.deudas;
             for (let i = 0; i < ingresos.length; i++) {

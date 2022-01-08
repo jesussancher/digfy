@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Legends from './legends';
 import GraphicsFlujo from './graphics/graphics-flujo';
 import GraphicsNivel from './graphics/graphics-nivel';
@@ -6,7 +6,7 @@ import GraphicsAhorro from './graphics/graphics-ahorro';
 import GraphicsConsumo from './graphics/graphics-consumo';
 import PDF from './pdf';
 import Button from '@material-ui/core/Button';
-import {withStyles, makeStyles} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 
 export default React.memo(function Results(props) {
 
@@ -71,7 +71,7 @@ export default React.memo(function Results(props) {
             </div>
             < div className="pay__section">
                 <h1 className="purple">¡Es una oportunidad de mejora!</h1>
-                <a href="https://mpago.li/1mTgGkK" target="_blank" alt="mercadopago">
+                <a href="https://mpago.li/1mTgGkK" target="_blank" rel="noreferrer" alt="mercadopago">
                     <Button className={classes.addButton}>
                         Agenda tu asesoría
                     </Button>

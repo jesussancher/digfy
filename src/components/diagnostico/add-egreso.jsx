@@ -6,8 +6,8 @@ export default function AddEgreso(props) {
 
     const [egresos,
         setEgresos] = useState([]);
-    const [listOpen,
-        setListOpen] = useState([false, 'close']);
+    // const [listOpen,
+    //     setListOpen] = useState([false, 'close']);
     const [perType,
         setPerType] = useState({
         financieros: {
@@ -23,14 +23,14 @@ export default function AddEgreso(props) {
             total: 0
         }
     });
-    const [vitalesTotal,
-        setVitalesTotal] = React.useState([]);
-    const [financierosTotal,
-        setFinancierosTotal] = React.useState([]);
-    const [hormigasTotal,
-        setHormigasTotal] = React.useState([]);
-    const [data,
-        setData] = useState([]);
+    // const [vitalesTotal,
+    //     setVitalesTotal] = React.useState([]);
+    // const [financierosTotal,
+    //     setFinancierosTotal] = React.useState([]);
+    // const [hormigasTotal,
+    //     setHormigasTotal] = React.useState([]);
+    // const [data,
+    //     setData] = useState([]);
 
     const newIngreso = (type) => {
         const type_ = type;
@@ -79,6 +79,7 @@ export default function AddEgreso(props) {
                     efePrice += parseInt(egresos[i].price);
                     totalHormigas.push({desc: egresos[i].desc, price: egresos[i].price});
                     break;
+                default: break;
             }
         }
         setPerType({
@@ -95,47 +96,47 @@ export default function AddEgreso(props) {
                 total: efePrice
             }
         })
-        setFinancierosTotal(totalFinancieros);
-        setVitalesTotal(totalVitales);
-        setHormigasTotal(totalHormigas);
+        // setFinancierosTotal(totalFinancieros);
+        // setVitalesTotal(totalVitales);
+        // setHormigasTotal(totalHormigas);
     };
 
     useEffect(() => {
         typeCounter()
     }, [egresos]);
 
-    const openList = (type) => {
-        switch (type) {
-            case "Vitales":
-                setData(vitalesTotal);
-                break;
-            case "Financieros":
-                setData(financierosTotal);
-                break;
-            case "Hormigas":
-                setData(hormigasTotal);
-                break;
-        }
-        setListOpen([true, type])
-    }
-    const closeList = () => {
-        setListOpen([false, 'close'])
-    }
+    // const openList = (type) => {
+    //     switch (type) {
+    //         case "Vitales":
+    //             setData(vitalesTotal);
+    //             break;
+    //         case "Financieros":
+    //             setData(financierosTotal);
+    //             break;
+    //         case "Hormigas":
+    //             setData(hormigasTotal);
+    //             break;
+    //     }
+    //     setListOpen([true, type])
+    // }
+    // const closeList = () => {
+    //     setListOpen([false, 'close'])
+    // }
 
-    const updateData = (type,data) => {
-        switch (type) {
-            case "Vitales":
-                setVitalesTotal(data);
-                break;
-            case "Financieros":
-                setFinancierosTotal(data);
-                break;
-            case "Hormigas":
-                setHormigasTotal(data);
-                break;
-        }
-        console.log(type)
-    };
+    // const updateData = (type,data) => {
+    //     switch (type) {
+    //         case "Vitales":
+    //             setVitalesTotal(data);
+    //             break;
+    //         case "Financieros":
+    //             setFinancierosTotal(data);
+    //             break;
+    //         case "Hormigas":
+    //             setHormigasTotal(data);
+    //             break;
+    //     }
+    //     console.log(type)
+    // };
 
     return (
         <div className="form__ingresos relative">

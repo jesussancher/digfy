@@ -12,7 +12,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import {SnackbarProvider, useSnackbar} from 'notistack';
-import Snackbar from '@material-ui/core/Snackbar';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -78,7 +77,7 @@ function MyApp(props) {
         //         break; }
     };
     const newIngreso = () => {
-        if (type != '' && price != 0) {
+        if (type !== '' && price !== 0) {
             props
                 .props
                 .newIngreso(type);
@@ -91,20 +90,20 @@ function MyApp(props) {
     return (
         <React.Fragment>
 
-            {props.props.inOut == "ingreso"
+            {props.props.inOut === "ingreso"
                 ? <Button className={classes.addButton} onClick={handleClickOpen}>Agregar ingreso</Button>
                 : props.props.inOut === "egreso"
                     ? <Button className={classes.addButton} onClick={handleClickOpen}>Agregar egreso</Button>
                     : <Button className={classes.addButton} onClick={handleClickOpen}>Agregar otra cosa</Button>
 }
-            {props.props.inOut == "ingreso"
+            {props.props.inOut === "ingreso"
                 ? <Dialog open={open} onClose={handleClose}>
                         <DialogTitle>Ingresos</DialogTitle>
                         <DialogContent>
                             <form className={classes.container}>
                                 <FormControl required className={classes.formControl}>
                                     <InputLabel id="demo-dialog-select-label">Tipo</InputLabel>
-                                    {props.props.inOut == "ingreso"
+                                    {props.props.inOut === "ingreso"
                                         ? <Select
                                                 labelId="demo-dialog-select-label"
                                                 id="typeIngreso"
@@ -150,7 +149,7 @@ function MyApp(props) {
                                 <form className={classes.container}>
                                     <FormControl required className={classes.formControl}>
                                         <InputLabel id="demo-dialog-select-label">Tipo</InputLabel>
-                                        {props.props.inOut == "egreso"
+                                        {props.props.inOut === "egreso"
                                             ? <Select
                                                     labelId="demo-dialog-select-label"
                                                     id="typeEgreso"

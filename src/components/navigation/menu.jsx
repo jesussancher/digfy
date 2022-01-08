@@ -1,30 +1,29 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
-export default function Menu(props) {
+export default function Menu() {
 
-    const [navOffset,
-        setNavOffset] = useState({inicio: '500', nosotros: '1700', diagnostico: '2300', ayuda: '2300'})
+    const navOffset = {inicio: '500', nosotros: '1700', diagnostico: '2300', ayuda: '2300'};
 
-    const sectionOffset = () => {
-        const inicio = document
-            .getElementById("inicio")
-            .offsetHeight;
-        const nosotros = document
-            .getElementById("nosotros")
-            .offsetHeight + inicio;
-        const diagnostico = document
-            .getElementById("diagnostico")
-            .offsetHeight + nosotros;
-        const ayuda = document
-            .getElementById("resultados")
-            .offsetHeight + diagnostico;
-        setNavOffset({
-            inicio: inicio - 1,
-            nosotros: nosotros - 1,
-            diagnostico: diagnostico - 1,
-            ayuda: ayuda - 1
-        })
-    }
+    // const sectionOffset = () => {
+    //     const inicio = document
+    //         .getElementById("inicio")
+    //         .offsetHeight;
+    //     const nosotros = document
+    //         .getElementById("nosotros")
+    //         .offsetHeight + inicio;
+    //     const diagnostico = document
+    //         .getElementById("diagnostico")
+    //         .offsetHeight + nosotros;
+    //     const ayuda = document
+    //         .getElementById("resultados")
+    //         .offsetHeight + diagnostico;
+    //     setNavOffset({
+    //         inicio: inicio - 1,
+    //         nosotros: nosotros - 1,
+    //         diagnostico: diagnostico - 1,
+    //         ayuda: ayuda - 1
+    //     })
+    // }
 
     // useEffect(() => {
     //     sectionOffset()

@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+// import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {lighten, makeStyles} from '@material-ui/core/styles';
@@ -20,11 +20,11 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
-function createData(name, price) {
-    return {name, price};
-}
+// function createData(name, price) {
+//     return {name, price};
+// }
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -253,12 +253,12 @@ export default function ListModal(props) {
         setOrderBy] = React.useState('calories');
     const [selected,
         setSelected] = React.useState([]);
-    const [page,
-        setPage] = React.useState(0);
-    const [dense,
-        setDense] = React.useState(false);
-    const [rowsPerPage,
-        setRowsPerPage] = React.useState(15);
+    // const [page,
+    //     setPage] = React.useState(0);
+    // const [dense,
+    //     setDense] = React.useState(false);
+    // const [rowsPerPage,
+    //     setRowsPerPage] = React.useState(15);
     const [open,
         setOpen] = React.useState(false);
 
@@ -304,7 +304,6 @@ export default function ListModal(props) {
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     const handleClose = () => {
         setOpen(false);
@@ -357,7 +356,6 @@ export default function ListModal(props) {
                                     rowCount={rows.length}/>
                                 <TableBody>
                                     {stableSort(rows, getComparator(order, orderBy))
-                                    // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                         .map((row, index) => {
                                         const isItemSelected = isSelected(row.name);
                                         const labelId = `enhanced-table-checkbox-${index}`;
@@ -384,16 +382,6 @@ export default function ListModal(props) {
                                             </TableRow>
                                         );
                                     })}
-                                    {/* {emptyRows > 0 && (
-                                        <TableRow
-                                            style={{
-                                            height: (dense
-                                                ? 33
-                                                : 53) * emptyRows
-                                        }}>
-                                            <TableCell colSpan={6}/>
-                                        </TableRow>
-                                    )} */}
                                 </TableBody>
                             </Table>
                         </TableContainer>

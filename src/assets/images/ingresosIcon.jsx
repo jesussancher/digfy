@@ -1,5 +1,4 @@
-import transitions from '@material-ui/core/styles/transitions';
-import React, {PureComponent} from 'react';
+import React from 'react';
 
 export default function IngresosIcon(porps) {
     return (

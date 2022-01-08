@@ -14,8 +14,8 @@ export default function AddIngreso(props) {
         setDeudas] = useState([]);
     const [propiedades,
         setPropiedades] = useState([]);
-    const [listOpen,
-        setListOpen] = useState([false, 'close']);
+    // const [listOpen,
+    //     setListOpen] = useState([false, 'close']);
     const [perTypeIngresos,
         setPerTypeIngresos] = useState({
         honorario: {
@@ -76,36 +76,36 @@ export default function AddIngreso(props) {
             total: 0
         }
     });
-    const [salarioTotal,
-        setSalarioTotal] = React.useState([]);
-    const [honorarioTotal,
-        setHonorarioTotal] = React.useState([]);
-    const [efectivoTotal,
-        setEfectivoTotal] = React.useState([]);
+    // const [salarioTotal,
+    //     setSalarioTotal] = React.useState([]);
+    // const [honorarioTotal,
+    //     setHonorarioTotal] = React.useState([]);
+    // const [efectivoTotal,
+    //     setEfectivoTotal] = React.useState([]);
 
-    const [vitalesTotal,
-        setVitalesTotal] = React.useState([]);
-    const [financierosTotal,
-        setFinancierosTotal] = React.useState([]);
-    const [hormigaTotal,
-        setHormigaTotal] = React.useState([]);
+    // const [vitalesTotal,
+    //     setVitalesTotal] = React.useState([]);
+    // const [financierosTotal,
+    //     setFinancierosTotal] = React.useState([]);
+    // const [hormigaTotal,
+    //     setHormigaTotal] = React.useState([]);
 
-    const [hipotecarioTotal,
-        setHipotecarioTotal] = React.useState([]);
-    const [libreTotal,
-        setLibreTotal] = React.useState([]);
-    const [diarioTotal,
-        setDiarioTotal] = React.useState([]);
+    // const [hipotecarioTotal,
+    //     setHipotecarioTotal] = React.useState([]);
+    // const [libreTotal,
+    //     setLibreTotal] = React.useState([]);
+    // const [diarioTotal,
+    //     setDiarioTotal] = React.useState([]);
 
-    const [inmuebleTotal,
-        setInmuebleTotal] = React.useState([]);
-    const [vehiculoTotal,
-        setVehiculoTotal] = React.useState([]);
-    const [otroTotal,
-        setOtroTotal] = React.useState([]);
+    // const [inmuebleTotal,
+    //     setInmuebleTotal] = React.useState([]);
+    // const [vehiculoTotal,
+    //     setVehiculoTotal] = React.useState([]);
+    // const [otroTotal,
+    //     setOtroTotal] = React.useState([]);
 
-    const [data,
-        setData] = useState([]);
+    // const [data,
+    //     setData] = useState([]);
 
     const newIngreso = (type) => {
         const type_ = type;
@@ -155,6 +155,7 @@ export default function AddIngreso(props) {
                     efePrice = parseInt(ingresos[i].price);
                     totalEfectivo.push({desc: ingresos[i].desc, price: ingresos[i].price});
                     break;
+                default: break;
             }
         }
         setPerTypeIngresos({
@@ -171,9 +172,9 @@ export default function AddIngreso(props) {
                 total: efePrice
             }
         })
-        setHonorarioTotal(totalHonorario);
-        setSalarioTotal(totalSalario);
-        setEfectivoTotal(totalEfectivo);
+        // setHonorarioTotal(totalHonorario);
+        // setSalarioTotal(totalSalario);
+        // setEfectivoTotal(totalEfectivo);
     };
 
     const newEgreso = (type) => {
@@ -225,6 +226,7 @@ export default function AddIngreso(props) {
                     hormiPrice = parseInt(egresos[i].price);
                     totalHormiga.push({desc: egresos[i].desc, price: egresos[i].price});
                     break;
+                default: break;
             }
         }
         setPerTypeEgresos({
@@ -241,9 +243,9 @@ export default function AddIngreso(props) {
                 total: hormiPrice
             }
         })
-        setVitalesTotal(totalVitales);
-        setFinancierosTotal(totalFinancieros);
-        setHormigaTotal(totalHormiga);
+        // setVitalesTotal(totalVitales);
+        // setFinancierosTotal(totalFinancieros);
+        // setHormigaTotal(totalHormiga);
     };
 
     const newDeudas = (type) => {
@@ -295,6 +297,7 @@ export default function AddIngreso(props) {
                     diarioPrice = parseInt(deudas[i].price);
                     totalDiario.push({desc: deudas[i].desc, price: deudas[i].price});
                     break;
+                default: break;
             }
         }
         setPerTypeDeudas({
@@ -311,9 +314,9 @@ export default function AddIngreso(props) {
                 total: diarioPrice
             }
         })
-        setHipotecarioTotal(totalHipotecario);
-        setLibreTotal(totalLibre);
-        setDiarioTotal(totalDiario);
+        // setHipotecarioTotal(totalHipotecario);
+        // setLibreTotal(totalLibre);
+        // setDiarioTotal(totalDiario);
     };
 
     const newPropiedades = (type) => {
@@ -365,6 +368,7 @@ export default function AddIngreso(props) {
                     otroPrice = parseInt(propiedades[i].price);
                     totalOtro.push({desc: propiedades[i].desc, price: propiedades[i].price});
                     break;
+                default: break;
             }
         }
         setPerTypePropiedades({
@@ -381,43 +385,43 @@ export default function AddIngreso(props) {
                 total: otroPrice
             }
         })
-        setInmuebleTotal(totalInmueble);
-        setVehiculoTotal(totalVehiculo);
-        setOtroTotal(totalOtro);
+        // setInmuebleTotal(totalInmueble);
+        // setVehiculoTotal(totalVehiculo);
+        // setOtroTotal(totalOtro);
     };
 
-    const openList = (type) => {
-        switch (type) {
-            case "Salario":
-                setData(salarioTotal);
-                break;
-            case "Honorario":
-                setData(honorarioTotal);
-                break;
-            case "Efectivo":
-                setData(efectivoTotal);
-                break;
-        }
-        setListOpen([true, type])
-    }
-    const closeList = () => {
-        setListOpen([false, 'close'])
-    }
+    // const openList = (type) => {
+    //     switch (type) {
+    //         case "Salario":
+    //             setData(salarioTotal);
+    //             break;
+    //         case "Honorario":
+    //             setData(honorarioTotal);
+    //             break;
+    //         case "Efectivo":
+    //             setData(efectivoTotal);
+    //             break;
+    //     }
+    //     setListOpen([true, type])
+    // }
+    // const closeList = () => {
+    //     setListOpen([false, 'close'])
+    // }
 
-    const updateData = (type, data) => {
-        switch (type) {
-            case "Salario":
-                setSalarioTotal(data);
-                break;
-            case "Honorario":
-                setHonorarioTotal(data);
-                break;
-            case "Efectivo":
-                setEfectivoTotal(data);
-                break;
-        }
-        console.log(type)
-    };
+    // const updateData = (type, data) => {
+    //     switch (type) {
+    //         case "Salario":
+    //             setSalarioTotal(data);
+    //             break;
+    //         case "Honorario":
+    //             setHonorarioTotal(data);
+    //             break;
+    //         case "Efectivo":
+    //             setEfectivoTotal(data);
+    //             break;
+    //     }
+    //     console.log(type)
+    // };
 
     const ingresoChart = () => {
         return (
@@ -604,5 +608,6 @@ export default function AddIngreso(props) {
             return (deudaChart());
         case 3:
             return (propiedadChart());
+        default: break;
     }
 }

@@ -9,8 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default function Terms(props) {
     const [open,
         setOpen] = React.useState(false);
-    const [scroll,
-        setScroll] = React.useState('paper');
+    const scroll = 'paper';
 
     React.useEffect(() => {
         setOpen(props.open)

@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Chart from 'chart.js';
 import $ from 'jquery';
 
@@ -10,7 +10,7 @@ export default function GraphicsFlujo(props) {
     const getIngEg = () => {
         let totalIngresos = 0;
         let totalEgresos = 0;
-        if (data.ingresos && data.egresos != undefined) {
+        if (data.ingresos && data.egresos !== undefined) {
             const ingresos = data.ingresos;
             const egresos = data.egresos;
             for (let i = 0; i < ingresos.length; i++) {

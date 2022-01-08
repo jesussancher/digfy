@@ -59,8 +59,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Legends(props) {
 
-    const [hover,
-        setHover] = React.useState("");
+    // const [hover,
+    //     setHover] = React.useState("");
     const [data,
         setData] = React.useState({});
     React.useEffect(() => {
@@ -70,7 +70,7 @@ export default function Legends(props) {
     const calcFlujo = () => {
         let totalIngresos = 0;
         let totalEgresos = 0;
-        if (data.ingresos && data.egresos != undefined) {
+        if (data.ingresos && data.egresos !== undefined) {
             const ingresos = data.ingresos;
             const egresos = data.egresos;
             for (let i = 0; i < ingresos.length; i++) {
@@ -89,7 +89,7 @@ export default function Legends(props) {
 
         let totalIngresos = 0;
         let totalDeudas = 0;
-        if (data.ingresos && data.deudas != undefined) {
+        if (data.ingresos && data.deudas !== undefined) {
             const ingresos = data.ingresos;
             const deudas = data.deudas;
             for (let i = 0; i < ingresos.length; i++) {
@@ -106,7 +106,7 @@ export default function Legends(props) {
     const calcConsumo = () => {
         let totalIngresos = 0;
         let totalDeudas = 0;
-        if (data.ingresos && data.deudas != undefined) {
+        if (data.ingresos && data.deudas !== undefined) {
             const deudas = data.deudas;
             const ingresos = data.ingresos;
             for (let i = 0; i < ingresos.length; i++) {
